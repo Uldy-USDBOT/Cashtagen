@@ -255,6 +255,14 @@
       font-size: 7rem; opacity: .18;
       animation: floatEmoji 4s ease-in-out infinite;
     }
+    .card-img .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
     @keyframes floatEmoji { 0%,100%{transform:scale(1) rotate(-5deg)} 50%{transform:scale(1.06) rotate(5deg)} }
 
     .caramel-bg  { background: linear-gradient(135deg, #E8A84C 0%, #C97B2C 100%); }
@@ -517,15 +525,15 @@
     <!-- 1 -->
     <div class="product-card featured">
       <div class="card-img caramel-bg">
-        <span style="font-size:4rem;z-index:1;position:relative;">🍮</span>
+        <img class="product-image" src="caramisek.jpg" alt="كيك كراميل كلاسيكي" />
         <div class="emoji-bg">🍮</div>
       </div>
       <div class="card-body">
-        <div class="card-name">كيك الكراميل الكلاسيكي</div>
+        <div class="card-name">كيك كراميل كلاسيكي</div>
         <p class="card-desc">كيك ناعم ومحشو بكريمة الكراميل، مغطى بصوص الكراميل الذهبي. الأكثر طلباً!</p>
         <div class="card-footer">
-          <div class="card-price">75 <span>دينار</span></div>
-          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك الكراميل الكلاسيكي" target="_blank" rel="noopener">
+          <div class="card-price">85 <span>دينار</span></div>
+          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك كراميل كلاسيكي" target="_blank" rel="noopener">
             🛒 اطلب
           </a>
         </div>
