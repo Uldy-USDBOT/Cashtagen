@@ -255,14 +255,6 @@
       font-size: 7rem; opacity: .18;
       animation: floatEmoji 4s ease-in-out infinite;
     }
-    .card-img .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
     @keyframes floatEmoji { 0%,100%{transform:scale(1) rotate(-5deg)} 50%{transform:scale(1.06) rotate(5deg)} }
 
     .caramel-bg  { background: linear-gradient(135deg, #E8A84C 0%, #C97B2C 100%); }
@@ -532,7 +524,7 @@
         <div class="card-name">كيك كراميل كلاسيكي</div>
         <p class="card-desc">كيك ناعم ومحشو بكريمة الكراميل، مغطى بصوص الكراميل الذهبي. الأكثر طلباً!</p>
         <div class="card-footer">
-          <div class="card-price">85 <span>دينار</span></div>
+          <div class="card-price">75 <span>دينار</span></div>
           <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك كراميل كلاسيكي" target="_blank" rel="noopener">
             🛒 اطلب
           </a>
@@ -543,14 +535,14 @@
     <!-- 2 -->
     <div class="product-card">
       <div class="card-img choco-bg">
-        <span style="font-size:4rem;z-index:1;position:relative;">🍫</span>
+        <img class="product-image" src="shak-1.jpg" alt="كيك الشوكولاتة والكراميل" />
         <div class="emoji-bg">🍫</div>
       </div>
       <div class="card-body">
         <div class="card-name">كيك الشوكولاتة والكراميل</div>
         <p class="card-desc">إسفنجة الشوكولاتة الغنية مع طبقات الكراميل المذاب، تجربة لا مثيل لها.</p>
         <div class="card-footer">
-          <div class="card-price">85 <span>دينار</span></div>
+          <div class="card-price">90 <span>دينار</span></div>
           <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك الشوكولاتة والكراميل" target="_blank" rel="noopener">
             🛒 اطلب
           </a>
@@ -561,14 +553,14 @@
     <!-- 3 -->
     <div class="product-card">
       <div class="card-img vanilla-bg">
-        <span style="font-size:4rem;z-index:1;position:relative;filter:drop-shadow(0 2px 4px rgba(0,0,0,.15));">🎂</span>
+        <img class="product-image" src="shak-2.jpg" alt="كيك الفانيلا بالكراميل" />
         <div class="emoji-bg">🎂</div>
       </div>
       <div class="card-body">
         <div class="card-name">كيك الفانيلا بالكراميل</div>
         <p class="card-desc">فانيلا فاخرة مع فروست الكراميل الخفيف، ناعم على اللسان ومثالي للمناسبات.</p>
         <div class="card-footer">
-          <div class="card-price">70 <span>دينار</span></div>
+          <div class="card-price">75 <span>دينار</span></div>
           <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك الفانيلا بالكراميل" target="_blank" rel="noopener">
             🛒 اطلب
           </a>
@@ -579,14 +571,14 @@
     <!-- 4 -->
     <div class="product-card">
       <div class="card-img rose-bg">
-        <span style="font-size:4rem;z-index:1;position:relative;">🧁</span>
+        <img class="product-image" src="shak-3.jpg" alt="كب كيك الكراميل" />
         <div class="emoji-bg">🧁</div>
       </div>
       <div class="card-body">
         <div class="card-name">كب كيك الكراميل</div>
         <p class="card-desc">12 حبة كب كيك مميزة مع كريمة الكراميل، مثالية للمجالس والأحزاب.</p>
         <div class="card-footer">
-          <div class="card-price">45 <span>دينار</span></div>
+          <div class="card-price">80 <span>دينار</span></div>
           <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كب كيك الكراميل" target="_blank" rel="noopener">
             🛒 اطلب
           </a>
@@ -597,14 +589,14 @@
     <!-- 5 -->
     <div class="product-card" style="grid-column: 1 / -1; max-width: 560px; margin: 0 auto; width: 100%;">
       <div class="card-img mixed-bg">
-        <span style="font-size:4rem;z-index:1;position:relative;">🎁</span>
+        <img class="product-image" src="shak-4.jpg" alt="بوكس الكعك المشكّل" />
         <div class="emoji-bg">🎁</div>
       </div>
       <div class="card-body">
         <div class="card-name">بوكس الكعك المشكّل</div>
         <p class="card-desc">صندوق مميز من 16 قطعة كعك متنوعة بالكراميل والشوكولاتة والفانيلا – هدية مثالية لأي مناسبة.</p>
         <div class="card-footer">
-          <div class="card-price">60 <span>دينار</span></div>
+          <div class="card-price">110 <span>دينار</span></div>
           <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: بوكس الكعك المشكّل" target="_blank" rel="noopener">
             🛒 اطلب
           </a>
@@ -613,6 +605,24 @@
     </div>
 
   </div>
+
+  <!-- ══ زر المنتجات الجديدة ══ -->
+  <div style="text-align:center; margin-top: 52px;">
+    <p style="color:#8a6840; font-size:1rem; margin-bottom:16px;">✨ اكتشف تشكيلتنا الجديدة من النكهات الحصرية</p>
+    <a href="New.html"
+       style="display:inline-flex; align-items:center; gap:10px;
+              background: linear-gradient(135deg, #7A4510 0%, #C97B2C 100%);
+              color:#fff; text-decoration:none;
+              padding:16px 40px; border-radius:50px;
+              font-family:'Tajawal',sans-serif; font-size:1.05rem; font-weight:800;
+              box-shadow: 0 8px 28px rgba(201,123,44,.45);
+              transition: transform .2s, box-shadow .2s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 14px 36px rgba(201,123,44,.6)'"
+       onmouseout="this.style.transform='';this.style.boxShadow='0 8px 28px rgba(201,123,44,.45)'">
+      🌟 شوف المنتجات الجديدة
+    </a>
+  </div>
+
 </section>
 
 <!-- ══════════════ FEATURES ══════════════ -->
