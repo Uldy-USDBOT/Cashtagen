@@ -35,12 +35,12 @@
         ::-webkit-scrollbar-track { background: var(--cream); }
         ::-webkit-scrollbar-thumb { background: var(--caramel); border-radius: 4px; }
 
-        /* Navigation – optimized for mobile */
+        /* شريط التنقل الرئيسي */
         .navbar {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 999;
-            padding: 8px 16px;
+            padding: 10px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,12 +50,38 @@
         .navbar.scrolled {
             background: rgba(44, 24, 16, 0.97);
             backdrop-filter: blur(15px);
-            padding: 6px 16px;
+            padding: 8px 16px;
             box-shadow: 0 2px 30px rgba(0,0,0,0.3);
         }
+
+        /* زر القائمة (الهمبرغر) */
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: var(--cream);
+            font-size: 1.6rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            z-index: 1001;
+            transition: transform 0.3s;
+        }
+        .menu-toggle:hover {
+            color: var(--gold);
+        }
+        .menu-toggle.active {
+            color: var(--gold);
+            transform: rotate(90deg);
+        }
+
+        /* الشعار في المنتصف */
         .nav-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;               /* reduced for mobile */
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--cream);
             text-decoration: none;
@@ -63,54 +89,32 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            margin: 0 auto;
         }
         .nav-logo span.ar {
             font-family: 'Cairo', sans-serif;
-            font-size: 1rem;                 /* slightly smaller Arabic */
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--gold);
         }
-        .nav-links {
-            display: flex;
-            gap: 12px;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 0.3px;
-            font-weight: 500;
-            position: relative;
-            padding-bottom: 3px;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0; right: 0;
-            width: 0; height: 1px;
-            background: var(--gold);
-            transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover { color: var(--gold); }
 
+        /* أيقونة السلة */
         .nav-cart {
             position: relative;
             cursor: pointer;
             color: var(--cream);
             display: flex;
             align-items: center;
+            z-index: 1001;
         }
+        .nav-cart:hover { color: var(--gold); transform: scale(1.05); }
         .cart-count {
             position: absolute;
             top: -6px; left: -6px;
             background: var(--whatsapp);
             color: white;
             font-size: 0.6rem;
-            width: 16px; height: 16px;
+            width: 18px; height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -118,17 +122,65 @@
             font-weight: 700;
         }
 
-        /* Hero (unchanged structure) */
-        .hero {
-            position: relative;
-            height: 100vh; width: 100%;
-            overflow: hidden;
+        /* القائمة المنسدلة */
+        .nav-links {
+            position: fixed;
+            top: 0; right: 0;
+            width: 75%;
+            max-width: 300px;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(20, 12, 8, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            list-style: none;
+            padding: 80px 30px 30px;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+        }
+        .nav-links.active {
+            transform: translateX(0);
+        }
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            display: block;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+            padding-right: 10px;
+        }
+
+        /* خلفية داكنة عند فتح القائمة */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* باقي التصميم يبقى كما هو دون تغيير */
+        .hero {
+            position: relative; height: 100vh; width: 100%; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
             background: var(--caramel-dark);
         }
-        /* ... keep all existing hero styles ... */
         .caramel-glow {
             position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
             background: radial-gradient(ellipse at 30% 20%, rgba(198,142,78,0.25) 0%, transparent 50%),
@@ -145,12 +197,10 @@
         .hero-cta:hover { background: var(--gold); color: var(--caramel-dark); }
         .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10; color: var(--cream); font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6; }
 
-        /* Sections */
         .section { padding: 60px 16px; max-width: 1300px; margin: 0 auto; width: 100%; }
         .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 6vw, 2.8rem); text-align: center; margin-bottom: 8px; color: var(--caramel-dark); font-weight: 600; }
         .section-subtitle { text-align: center; color: var(--caramel); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 40px; }
 
-        /* ... keep rest of product styles unchanged ... */
         .products-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width:480px) { .products-grid { grid-template-columns: repeat(2,1fr); } }
         @media (min-width:768px) { .products-grid { grid-template-columns: repeat(3,1fr); gap:25px; } }
@@ -160,7 +210,7 @@
         .product-card:active { transform: scale(0.98); }
         .product-image { width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg,#f5e6d3,#e8cfa0); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .product-emoji { font-size: clamp(3rem,15vw,5rem); transition: transform 0.3s; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2)); }
-        .product-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }  /* image styling */
+        .product-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
         .product-info { padding: 16px; flex:1; display: flex; flex-direction: column; justify-content: space-between; }
         .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; color: var(--caramel-dark); }
         .product-origin { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px; }
@@ -169,7 +219,6 @@
         .quick-add { width: 36px; height: 36px; border-radius: 50%; border:2px solid var(--caramel); background: transparent; color: var(--caramel); cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; font-weight: bold; }
         .gift-ribbon { position: absolute; top:12px; left:-28px; background: var(--gold); color: var(--caramel-dark); padding:4px 35px; font-size:0.7rem; font-weight:700; transform: rotate(-45deg); z-index:5; }
 
-        /* ... rest of CSS (timeline, cart, pdp, footer, toast) remains as before ... */
         .filter-tabs { display: flex; justify-content: center; gap:6px; margin-bottom:30px; flex-wrap:wrap; }
         .filter-tab { padding:8px 16px; background: white; border:1px solid #ddd; color: var(--text-dark); font-size:0.8rem; cursor:pointer; border-radius:20px; font-weight:500; white-space:nowrap; }
         .filter-tab.active { background: var(--caramel-dark); color: white; border-color: var(--caramel-dark); }
@@ -241,18 +290,30 @@
 <body>
 
     <nav class="navbar" id="navbar">
+        <!-- زر القائمة الجانبية -->
+        <button class="menu-toggle" id="menuToggle" aria-label="القائمة">☰</button>
+
+        <!-- الشعار في المنتصف -->
         <a href="#" class="nav-logo"><span class="ar">كراميسك</span> CARAMISC</a>
-        <ul class="nav-links">
-            <li><a href="#products">القائمة</a></li>
-            <li><a href="#gifts">هدايا</a></li>
-            <li><a href="#timeline">قصتنا</a></li>
-        </ul>
+
+        <!-- أيقونة السلة -->
         <div class="nav-cart" id="navCart">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             <span class="cart-count" id="cartCount">0</span>
         </div>
+
+        <!-- القائمة المخفية -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#products">القائمة</a></li>
+            <li><a href="#gifts">هدايا</a></li>
+            <li><a href="#timeline">قصتنا</a></li>
+        </ul>
     </nav>
 
+    <!-- خلفية تغميق عند فتح القائمة -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- باقي المحتوى دون تغيير -->
     <section class="hero" id="hero">
         <div class="caramel-glow"></div>
         <canvas id="cocoaCanvas"></canvas>
@@ -371,6 +432,11 @@
         const cartSubtotal = document.getElementById('cartSubtotal');
         const pdpOverlay = document.getElementById('pdpOverlay');
         const toast = document.getElementById('toast');
+        
+        // عناصر القائمة الجديدة
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
 
         // Canvas
         const canvas = document.getElementById('cocoaCanvas');
@@ -516,6 +582,7 @@
 
         document.getElementById('whatsappOrderBtn').addEventListener('click', sendWhatsAppOrder);
 
+        // أحداث السلة
         document.getElementById('navCart').addEventListener('click', ()=>{
             cartOverlay.classList.add('active'); cartDrawer.classList.add('active');
         });
@@ -523,6 +590,7 @@
         cartOverlay.addEventListener('click', closeCart);
         document.getElementById('cartClose').addEventListener('click', closeCart);
 
+        // أحداث المنتج المنبثق
         function openPdp(productId) {
             currentProduct = products.find(p => p.id===productId);
             if(!currentProduct) return;
@@ -557,6 +625,40 @@
             toast.classList.add('show');
             setTimeout(()=>toast.classList.remove('show'),2200);
         }
+
+        // ---------- دوال التحكم بالقائمة الجانبية ----------
+        function openMenu() {
+            navLinks.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.classList.add('active');
+            menuToggle.innerHTML = '✕';
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuToggle.innerHTML = '☰';
+        }
+        
+        menuToggle.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+        
+        menuOverlay.addEventListener('click', closeMenu);
+        
+        // إغلاق القائمة عند النقر على أي رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // إغلاق القائمة تلقائياً عند فتح السلة أو غيرها
+        document.getElementById('navCart').addEventListener('click', closeMenu);
 
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
