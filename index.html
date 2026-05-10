@@ -1281,21 +1281,21 @@
 
         // ============ البيانات ============
         const products = [
-            { id:1, name:"كيك كراميل كلاسيكي", origin:"طبقات إسفنجية بصوص الكراميل", price:85, category:"cake", emoji:"🍰", image:"caramisek.jpg", desc:"كيك إسفنجي فانيلا مغطى بكريمة الزبدة بالكراميل ومزين بالجوز. نكهة غنية ومتوازنة.", gift:false },
-            { id:2, name:"تشيز كيك الكراميل", origin:"تشيز كيك بارد بصوص الكراميل", price:95, category:"cheesecake", emoji:"🧀", desc:"قاعدة بسكويت مع حشوة جبن كريمي غنية وطبقة كراميل مملح.", gift:false },
-            { id:3, name:"براوني الكراميل", origin:"براوني شوكولاتة بصوص الكراميل", price:75, category:"cake", emoji:"🍫", desc:"براوني شوكولاتة داكنة مع عروق كراميل لزجة ورشة ملح بحري.", gift:false },
-            { id:4, name:"تارت الكراميل بالتمر", origin:"تارت كراميل فانيلا طرابلسي", price:70, category:"cake", emoji:"🥧", desc:"تارت محشو بكريمة التمر والكراميل مع طبقة كراميل مقرمشة.", gift:false },
-            { id:5, name:"كب كيك الكراميل (6)", origin:"6 حبات كب كيك محشية", price:60, category:"cake", emoji:"🧁", desc:"كب كيك فانيلا طري محشو بصوص الكراميل ومغطى بكريمة ذهبية.", gift:false },
-            { id:6, name:"حلويات مشكلة", origin:"تشكيلة منوعة من حلويات الكراميل", price:120, category:"special", emoji:"🍬", desc:"طبق يضم قطعاً مختارة من أشهر حلوياتنا: كيك، براوني، تارت، وكب كيك.", gift:false },
-            { id:7, name:"مالفي زمان", origin:"كيكة مالفي كراميل تقليدية", price:4, category:"special", emoji:"🥮", desc:"وصفة قديمة من المطبخ الليبي: كيكة مالفي محشوة بصوص الكراميل والمكسرات.", gift:false },
-            { id:8, name:"تورتة زمان", origin:"تورتة  فاخرة", price:65, category:"special", emoji:"🎂", desc:"تورتة كبيرة متعددة الطبقات بكريمة الكراميل والجوز، مثالية للمناسبات.", gift:true },
-            { id:9, name:"طبق كيك الكراميل المشكل", origin:"مجموعة تذوق – 4 أنواع", price:180, category:"gift", emoji:"🎁", desc:"شرائح متنوعة من جميع كيكات الكراميل لدينا. مثالي للهدايا.", gift:true }
+            { id:1, name:"كيك كراميل كلاسيكي", origin:"طبقات إسفنجية بصوص الكراميل", price:85, category:"cake", emoji:"🍰", img:"classic.jpg", desc:"كيك إسفنجي فانيلا مغطى بكريمة الزبدة بالكراميل ومزين بالجوز. نكهة غنية ومتوازنة.", gift:false },
+            { id:2, name:"تشيز كيك الكراميل", origin:"تشيز كيك بارد بصوص الكراميل", price:95, category:"cheesecake", emoji:"🧀", img:"cheese.jpg", desc:"قاعدة بسكويت مع حشوة جبن كريمي غنية وطبقة كراميل مملح.", gift:false },
+            { id:3, name:"براوني الكراميل", origin:"براوني شوكولاتة بصوص الكراميل", price:75, category:"cake", emoji:"🍫", img:"brownie.jpg", desc:"براوني شوكولاتة داكنة مع عروق كراميل لزجة ورشة ملح بحري.", gift:false },
+            { id:4, name:"تارت الكراميل بالتمر", origin:"تارت كراميل فانيلا طرابلسي", price:70, category:"cake", emoji:"🥧", img:"tart.jpg", desc:"تارت محشو بكريمة التمر والكراميل مع طبقة كراميل مقرمشة.", gift:false },
+            { id:5, name:"كب كيك الكراميل (6)", origin:"6 حبات كب كيك محشية", price:60, category:"cake", emoji:"🧁", img:"cupcake.jpg", desc:"كب كيك فانيلا طري محشو بصوص الكراميل ومغطى بكريمة ذهبية.", gift:false },
+            { id:6, name:"حلويات مشكلة", origin:"تشكيلة منوعة من حلويات الكراميل", price:120, category:"special", emoji:"🍬", img:"mixed.jpg", desc:"طبق يضم قطعاً مختارة من أشهر حلوياتنا: كيك، براوني، تارت، وكب كيك.", gift:false },
+            { id:7, name:"مالفي زمان", origin:"كيكة مالفي كراميل تقليدية", price:90, category:"special", emoji:"🥮", img:"malvi.jpg", desc:"وصفة قديمة من المطبخ الليبي: كيكة مالفي محشوة بصوص الكراميل والمكسرات.", gift:false },
+            { id:8, name:"تورتة زمان", origin:"تورتة كراميل فاخرة", price:150, category:"special", emoji:"🎂", img:"torta.jpg", desc:"تورتة كبيرة متعددة الطبقات بكريمة الكراميل والجوز، مثالية للمناسبات.", gift:true },
+            { id:9, name:"طبق كيك الكراميل المشكل", origin:"مجموعة تذوق – 4 أنواع", price:180, category:"gift", emoji:"🎁", img:"sampler.jpg", desc:"شرائح متنوعة من جميع كيكات الكراميل لدينا. مثالي للهدايا.", gift:true }
         ];
 
         const gifts = [
-            { id:"g1", name:"صندوق تذوق الكراميل", desc:"4 قطع مختارة", price:99, emoji:"🎀" },
-            { id:"g2", name:"صندوق الهدايا الفاخر", desc:"8 قطع مع تغليف ذهبي", price:180, emoji:"💝" },
-            { id:"g3", name:"صندوق المناسبات", desc:"12 قطعة + نقش الاسم", price:280, emoji:"👑" }
+            { id:"g1", name:"صندوق تذوق الكراميل", desc:"4 قطع مختارة", price:99, emoji:"🎀", img:"box4.jpg" },
+            { id:"g2", name:"صندوق الهدايا الفاخر", desc:"8 قطع مع تغليف ذهبي", price:180, emoji:"💝", img:"box8.jpg" },
+            { id:"g3", name:"صندوق المناسبات", desc:"12 قطعة + نقش الاسم", price:280, emoji:"👑", img:"box12.jpg" }
         ];
 
         // ============ الحالة ============
@@ -1438,7 +1438,7 @@
 
         // ============ عرض المنتجات ============
         function getImageHTML(p) {
-            if (p.image) return '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">';
+            if (p.img) return '<img src="images/' + p.img + '" alt="' + p.name + '" loading="lazy">';
             return '<span class="product-emoji">' + p.emoji + '</span>';
         }
 
@@ -1479,8 +1479,9 @@
 
         function renderGifts() {
             giftGrid.innerHTML = gifts.map(function(g) {
+                var imgHtml = g.img ? '<img src="images/' + g.img + '" alt="' + g.name + '" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-bottom:10px;" loading="lazy">' : '<div class="gift-icon">' + g.emoji + '</div>';
                 return '<div class="gift-card">' +
-                    '<div class="gift-icon">' + g.emoji + '</div>' +
+                    imgHtml +
                     '<div class="gift-title">' + g.name + '</div>' +
                     '<div class="gift-desc">' + g.desc + '</div>' +
                     '<div class="gift-price">' + g.price + ' د.ل</div>' +
@@ -1538,8 +1539,8 @@
                 cartItemsList.innerHTML = '<div class="empty-cart-msg"><div style="font-size:3rem;margin-bottom:8px;">🧁</div><p>السلة فارغة</p></div>';
             } else {
                 cartItemsList.innerHTML = cart.map(function(item, idx) {
-                    var thumb = item.product.image
-                        ? '<img src="' + item.product.image + '" alt="" loading="lazy">'
+                    var thumb = item.product.img
+                        ? '<img src="images/' + item.product.img + '" alt="" loading="lazy">'
                         : (item.product.emoji || '🎁');
                     return '<div class="cart-item-row">' +
                         '<div class="cart-item-thumb">' + thumb + '</div>' +
@@ -1682,10 +1683,10 @@
 
         // ============ منتجات جديدة ============
         const newProducts = [
-            { id:101, name:"كيك كراميل بالفستق", origin:"فستق حلبي مُحمص مع كراميل ذهبي", price:110, category:"cake", emoji:"🥜", desc:"طبقات إسفنجية فانيلا مع كريمة كراميل غنية ومكسرات فستق حلبي محمصة يدوياً.", isNew:true },
-            { id:102, name:"تشيز كيك التوت البري", origin:"توت بري طازج مع صوص الكراميل", price:105, category:"cheesecake", emoji:"🫐", desc:"تشيز كيك كريمي مع طبقة توت بري طازج وصوص كراميل مملح، مزيج مثالي من الحموضة والحلاوة.", isNew:true },
-            { id:103, name:"كيك التمر باللوز", origin:"تمر مجهول + لوز محمص", price:95, category:"cake", emoji:"🌴", desc:"كيك غني بالتمر المجهول الطرابلسي مع قطع اللوز المحمص وصوص الكراميل.", isNew:true },
-            { id:104, name:"سوفتي كراميل", origin:"كيك اسفنجي طري بالكراميل", price:80, category:"cake", emoji:"🍮", desc:"كيك اسفنجي فائق الطراوة مغموس بصوص الكراميل الدافئ، يذوب في الفم.", isNew:true }
+            { id:101, name:"كيك كراميل بالفستق", origin:"فستق حلبي مُحمص مع كراميل ذهبي", price:110, category:"cake", emoji:"🥜", img:"pistachio.jpg", desc:"طبقات إسفنجية فانيلا مع كريمة كراميل غنية ومكسرات فستق حلبي محمصة يدوياً.", isNew:true },
+            { id:102, name:"تشيز كيك التوت البري", origin:"توت بري طازج مع صوص الكراميل", price:105, category:"cheesecake", emoji:"🫐", img:"berry.jpg", desc:"تشيز كيك كريمي مع طبقة توت بري طازج وصوص كراميل مملح، مزيج مثالي من الحموضة والحلاوة.", isNew:true },
+            { id:103, name:"كيك التمر باللوز", origin:"تمر مجهول + لوز محمص", price:95, category:"cake", emoji:"🌴", img:"dates.jpg", desc:"كيك غني بالتمر المجهول الطرابلسي مع قطع اللوز المحمص وصوص الكراميل.", isNew:true },
+            { id:104, name:"سوفتي كراميل", origin:"كيك اسفنجي طري بالكراميل", price:80, category:"cake", emoji:"🍮", img:"softy.jpg", desc:"كيك اسفنجي فائق الطراوة مغموس بصوص الكراميل الدافئ، يذوب في الفم.", isNew:true }
         ];
 
         function renderNewProducts() {
@@ -1694,9 +1695,7 @@
             grid.innerHTML = newProducts.map(function(p) {
                 return '<div class="product-card" data-new-pid="' + p.id + '">' +
                     '<div class="new-tag">جديد</div>' +
-                    '<div class="product-img">' +
-                        '<span class="product-emoji">' + p.emoji + '</span>' +
-                    '</div>' +
+                    '<div class="product-img">' + getImageHTML(p) + '</div>' +
                     '<div class="product-info">' +
                         '<div class="product-name">' + p.name + '</div>' +
                         '<div class="product-origin">' + p.origin + '</div>' +
