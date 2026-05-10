@@ -1,837 +1,2263 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>كراميسك – كيك الكراميل والكعك الفاخر</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --caramel:       #C97B2C;
-      --caramel-light: #E8A84C;
-      --caramel-dark:  #7A4510;
-      --cream:         #FDF6EC;
-      --cream-dark:    #F5E6CE;
-      --chocolate:     #2C1A0E;
-      --gold:          #D4A843;
-      --ivory:         #FAF3E8;
-      --shadow:        rgba(44,26,14,0.18);
-      --text:          #2C1A0E;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كراميسك - كيك الكراميل الفاخر</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --caramel-dark: #2C1810;
+            --caramel: #C68E4E;
+            --caramel-light: #E6B87A;
+            --cream: #F5F0E8;
+            --cream-dark: #E8E0D0;
+            --gold: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8941F;
+            --toffee: #A0522D;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Cairo', 'Noto Naskh Arabic', serif;
+            background-color: var(--cream);
+            color: var(--caramel-dark);
+            overflow-x: hidden;
+        }
 
-    /* ── Grain overlay ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; opacity: .45;
-    }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--caramel);
+            border-radius: 4px;
+        }
 
-    /* ══════════════ NAVBAR ══════════════ */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 6%;
-      background: rgba(253,246,236,.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(201,123,44,.2);
-      transition: box-shadow .3s;
-    }
-    nav.scrolled { box-shadow: 0 4px 30px var(--shadow); }
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 14px 40px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.2);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo span.ar {
+            font-family: 'Cairo', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            flex-direction: row-reverse; /* for RTL */
+        }
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-cart {
+            position: relative;
+            cursor: pointer;
+            color: var(--cream);
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+        .nav-cart:hover {
+            transform: scale(1.1);
+            color: var(--gold);
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: var(--caramel-light);
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
 
-    .nav-logo {
-      font-family: 'Amiri', serif;
-      font-size: 2rem; font-weight: 700;
-      color: var(--caramel-dark);
-      letter-spacing: 1px;
-      position: relative;
-    }
-    .nav-logo span { color: var(--caramel); }
-    .nav-logo::after {
-      content: '✦';
-      font-size: .7rem; color: var(--gold);
-      position: absolute; top: 2px; left: -14px;
-    }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--caramel-dark);
+        }
+        .hero-video-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .hero-video-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(44, 24, 16, 0.3) 0%, rgba(44, 24, 16, 0.1) 40%, rgba(44, 24, 16, 0.6) 100%);
+            z-index: 2;
+        }
+        .caramel-glow {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(198, 142, 78, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(230, 184, 122, 0.4) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(160, 82, 45, 0.2) 0%, transparent 50%);
+            animation: glowMove 20s ease-in-out infinite;
+        }
+        @keyframes glowMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-2%, 2%) rotate(1deg); }
+            66% { transform: translate(2%, -1%) rotate(-1deg); }
+        }
+        #cocoaCanvas {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--cream);
+            padding: 0 20px;
+        }
+        .hero-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 10vw, 96px);
+            font-weight: 400;
+            letter-spacing: 8px;
+            margin-bottom: 8px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-brand .ar-brand {
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.6em;
+            display: block;
+            letter-spacing: 8px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(18px, 3vw, 28px);
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: translateX(101%);
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        .hero-cta:hover::before {
+            transform: translateX(0);
+        }
+        .hero-cta:hover {
+            color: var(--caramel-dark);
+            border-color: var(--gold);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--cream);
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
 
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--chocolate);
-      font-weight: 500; font-size: .95rem;
-      position: relative; padding-bottom: 4px;
-      transition: color .3s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; right: 0;
-      width: 0; height: 2px; background: var(--caramel);
-      transition: width .3s;
-    }
-    .nav-links a:hover { color: var(--caramel); }
-    .nav-links a:hover::after { width: 100%; }
+        /* Section Styling */
+        .section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--caramel-dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 16px auto 0;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--caramel);
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 60px;
+        }
 
-    .nav-wa {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--caramel); color: #fff;
-      text-decoration: none; padding: 10px 20px; border-radius: 50px;
-      font-weight: 700; font-size: .9rem;
-      box-shadow: 0 4px 20px rgba(201,123,44,.4);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .nav-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,123,44,.55); }
-    .nav-wa svg { width: 18px; height: 18px; fill: #fff; }
+        /* Seasonal Section */
+        .seasonal-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .seasonal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .seasonal-card {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(44, 24, 16, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .seasonal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(44, 24, 16, 0.15);
+        }
+        .seasonal-card-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--caramel-light) 0%, var(--toffee) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .seasonal-card-image::after {
+            content: '🍰';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            opacity: 0.3;
+        }
+        .seasonal-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--caramel);
+            color: white;
+            padding: 6px 14px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border-radius: 2px;
+        }
+        .seasonal-card-content {
+            padding: 28px;
+        }
+        .seasonal-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--caramel-dark);
+        }
+        .seasonal-card-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .seasonal-card-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--caramel-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .add-to-cart-btn {
+            padding: 10px 24px;
+            background: var(--caramel-dark);
+            color: var(--cream);
+            border: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .add-to-cart-btn:hover {
+            background: var(--gold);
+            color: var(--caramel-dark);
+        }
 
-    /* ══════════════ HERO ══════════════ */
-    .hero {
-      min-height: 100vh;
-      display: grid; place-items: center;
-      text-align: center;
-      padding: 140px 6% 80px;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,123,44,.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(212,168,67,.12) 0%, transparent 65%),
-        var(--cream);
-      position: relative; overflow: hidden;
-    }
+        /* Product Grid */
+        .products-section {
+            background: var(--cream);
+        }
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .filter-tab {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--cream-dark);
+            color: var(--caramel-dark);
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+            font-family: 'Cairo', sans-serif;
+        }
+        .filter-tab:hover, .filter-tab.active {
+            background: var(--caramel-dark);
+            color: var(--cream);
+            border-color: var(--caramel-dark);
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(44, 24, 16, 0.06);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 50px rgba(44, 24, 16, 0.12);
+        }
+        .product-image {
+            width: 100%;
+            height: 260px;
+            background: linear-gradient(135deg, #8B5A2B 0%, var(--toffee) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+        }
+        .product-emoji {
+            font-size: 100px;
+            opacity: 0.9;
+            transition: transform 0.4s;
+            z-index: 2;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+        }
+        .product-card:hover .product-emoji {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .product-info {
+            padding: 24px;
+        }
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: var(--caramel-dark);
+        }
+        .product-origin {
+            font-size: 12px;
+            color: var(--caramel);
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--cream-dark);
+        }
+        .product-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--caramel-dark);
+        }
+        .quick-add {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--caramel-dark);
+            background: transparent;
+            color: var(--caramel-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 18px;
+        }
+        .quick-add:hover {
+            background: var(--caramel-dark);
+            color: var(--cream);
+        }
+        .gift-ribbon {
+            position: absolute;
+            top: 12px;
+            left: -30px;
+            background: var(--gold);
+            color: var(--caramel-dark);
+            padding: 4px 40px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
 
-    /* Decorative circles */
-    .hero::before, .hero::after {
-      content: '';
-      position: absolute; border-radius: 50%;
-      border: 1.5px dashed rgba(201,123,44,.25);
-      animation: spin 30s linear infinite;
-    }
-    .hero::before { width: 520px; height: 520px; top: -80px; right: -100px; }
-    .hero::after  { width: 340px; height: 340px; bottom: -60px; left: -80px; animation-direction: reverse; animation-duration: 22s; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+        /* Timeline Section */
+        .timeline-section {
+            background: var(--caramel-dark);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        .timeline-section .section-title {
+            color: var(--cream);
+        }
+        .timeline-section .section-subtitle {
+            color: var(--caramel);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        .timeline-line {
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
+            transform: translateX(50%);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 50%;
+            position: relative;
+            margin-bottom: 60px;
+        }
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            padding-left: 0;
+            padding-right: 50%;
+        }
+        .timeline-content {
+            max-width: 400px;
+            padding: 0 40px;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: left;
+        }
+        .timeline-dot {
+            position: absolute;
+            right: 50%;
+            top: 0;
+            transform: translateX(50%);
+            width: 20px;
+            height: 20px;
+            background: var(--caramel-dark);
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .timeline-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--cream);
+        }
+        .timeline-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(245, 240, 232, 0.8);
+        }
 
-    .hero-badge {
-      display: inline-block;
-      background: var(--caramel-dark); color: var(--cream);
-      font-size: .8rem; font-weight: 700; letter-spacing: 2px;
-      padding: 6px 18px; border-radius: 50px;
-      margin-bottom: 24px;
-      animation: fadeUp .8s ease both;
-    }
+        /* Gift Guide */
+        .gift-section {
+            background: linear-gradient(180deg, var(--cream) 0%, #EDE8E0 100%);
+        }
+        .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .gift-card {
+            background: white;
+            border-radius: 4px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(44, 24, 16, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        .gift-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+        .gift-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .gift-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--caramel-dark);
+        }
+        .gift-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .gift-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--caramel-dark);
+            margin-bottom: 20px;
+        }
 
-    .hero h1 {
-      font-family: 'Amiri', serif;
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: 1.1;
-      color: var(--caramel-dark);
-      animation: fadeUp .9s .1s ease both;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--caramel);
-      text-shadow: 0 4px 30px rgba(201,123,44,.3);
-    }
+        /* Footer */
+        .footer {
+            background: var(--caramel-dark);
+            color: var(--cream);
+            padding: 80px 40px 40px;
+        }
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        .footer-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(245, 240, 232, 0.6);
+            max-width: 300px;
+        }
+        .footer-title {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: rgba(245, 240, 232, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(245, 240, 232, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: rgba(245, 240, 232, 0.4);
+        }
 
-    .hero-sub {
-      margin: 20px auto 0;
-      max-width: 560px; font-size: 1.15rem;
-      color: #7a5c38; line-height: 1.7;
-      animation: fadeUp 1s .2s ease both;
-    }
+        /* Cart Drawer */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 480px;
+            max-width: 100%;
+            height: 100vh;
+            background: var(--cream);
+            z-index: 2001;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 10px 0 40px rgba(0,0,0,0.2);
+        }
+        .cart-drawer.active {
+            transform: translateX(0);
+        }
+        .cart-header {
+            padding: 30px;
+            border-bottom: 1px solid var(--cream-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row-reverse;
+        }
+        .cart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--caramel-dark);
+        }
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--caramel-dark);
+            transition: transform 0.3s;
+        }
+        .cart-close:hover {
+            transform: rotate(90deg);
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 30px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--cream-dark);
+            flex-direction: row-reverse;
+        }
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--caramel-light), var(--toffee));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .cart-item-details {
+            flex: 1;
+            text-align: right;
+        }
+        .cart-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--caramel-dark);
+        }
+        .cart-item-variant {
+            font-size: 12px;
+            color: var(--caramel);
+            margin-bottom: 8px;
+        }
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--caramel-dark);
+        }
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+            justify-content: flex-end;
+        }
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--cream-dark);
+            background: white;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        .qty-btn:hover {
+            background: var(--caramel-dark);
+            color: var(--cream);
+            border-color: var(--caramel-dark);
+        }
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid var(--cream-dark);
+            background: white;
+        }
+        .gift-wrap-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--cream);
+            border-radius: 4px;
+            border: 1px solid var(--cream-dark);
+        }
+        .gift-message {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--cream-dark);
+            border-radius: 4px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 13px;
+            resize: none;
+            margin-bottom: 16px;
+            display: none;
+        }
+        .gift-message.active {
+            display: block;
+        }
+        .free-shipping-bar {
+            height: 4px;
+            background: var(--cream-dark);
+            border-radius: 2px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .free-shipping-progress {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+        .free-shipping-text {
+            font-size: 12px;
+            color: var(--caramel);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--caramel-dark);
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--caramel-dark);
+            color: var(--cream);
+            border: none;
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+        .checkout-btn:hover {
+            background: var(--gold);
+            color: var(--caramel-dark);
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+        .empty-cart-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
 
-    .hero-btns {
-      margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-      animation: fadeUp 1s .35s ease both;
-    }
-    .btn-primary {
-      background: var(--caramel); color: #fff;
-      padding: 14px 36px; border-radius: 50px;
-      font-size: 1.05rem; font-weight: 700; text-decoration: none;
-      box-shadow: 0 6px 28px rgba(201,123,44,.45);
-      transition: transform .2s, box-shadow .2s;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(201,123,44,.55); }
-    .btn-secondary {
-      background: transparent; color: var(--caramel-dark);
-      padding: 14px 36px; border-radius: 50px;
-      font-size: 1.05rem; font-weight: 600; text-decoration: none;
-      border: 2px solid var(--caramel);
-      transition: all .25s;
-    }
-    .btn-secondary:hover { background: var(--caramel); color: #fff; }
+        /* Product Detail Modal */
+        .pdp-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            overflow-y: auto;
+        }
+        .pdp-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .pdp-container {
+            background: var(--cream);
+            max-width: 1100px;
+            margin: 60px auto;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            transform: translateY(40px);
+            transition: transform 0.4s ease;
+        }
+        .pdp-overlay.active .pdp-container {
+            transform: translateY(0);
+        }
+        .pdp-close {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            width: 44px;
+            height: 44px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .pdp-close:hover {
+            background: var(--caramel-dark);
+            color: var(--cream);
+            transform: rotate(90deg);
+        }
+        .pdp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+        .pdp-image-section {
+            background: linear-gradient(135deg, var(--caramel-light), var(--toffee));
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .pdp-emoji {
+            font-size: 200px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .pdp-info {
+            padding: 50px;
+            overflow-y: auto;
+            max-height: 80vh;
+            text-align: right;
+        }
+        .pdp-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 8px;
+            color: var(--caramel-dark);
+        }
+        .pdp-origin {
+            font-size: 14px;
+            color: var(--caramel);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .pdp-price {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--caramel-dark);
+            margin-bottom: 30px;
+        }
+        .pdp-tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--cream-dark);
+            margin-bottom: 24px;
+        }
+        .pdp-tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: #999;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 500;
+        }
+        .pdp-tab.active {
+            color: var(--caramel-dark);
+            border-bottom-color: var(--gold);
+        }
+        .pdp-tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        .pdp-tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .flavor-map-visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .flavor-bar {
+            background: var(--cream-dark);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        .flavor-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        .flavor-label {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+        .tasting-note {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            border-right: 3px solid var(--gold);
+            margin-bottom: 16px;
+            text-align: right;
+        }
+        .tasting-note-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--caramel-dark);
+        }
+        .tasting-note-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+        }
+        .allergen-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(198, 142, 78, 0.2);
+            color: var(--caramel-dark);
+            font-size: 12px;
+            border-radius: 2px;
+            margin: 4px 0 4px 4px;
+            font-weight: 500;
+        }
+        .pairing-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+        .pairing-icon {
+            font-size: 24px;
+        }
+        .review-card {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            text-align: right;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--caramel-dark);
+        }
+        .review-stars {
+            color: var(--gold);
+        }
+        .review-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .pdp-add-cart {
+            margin-top: 30px;
+            display: flex;
+            gap: 16px;
+        }
+        .pdp-qty {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--cream-dark);
+        }
+        .pdp-qty button {
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+        .pdp-qty button:hover {
+            background: var(--caramel-dark);
+            color: var(--cream);
+        }
+        .pdp-qty span {
+            width: 44px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .pdp-add-btn {
+            flex: 1;
+            padding: 14px 32px;
+            background: var(--caramel-dark);
+            color: var(--cream);
+            border: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+        .pdp-add-btn:hover {
+            background: var(--gold);
+            color: var(--caramel-dark);
+        }
 
-    .hero-stats {
-      margin-top: 60px; display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
-      animation: fadeUp 1s .5s ease both;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Amiri', serif; font-size: 2.2rem; font-weight: 700;
-      color: var(--caramel-dark);
-    }
-    .stat-label { font-size: .85rem; color: #8a6840; margin-top: 2px; }
+        /* Checkout Modal */
+        .checkout-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            overflow-y: auto;
+        }
+        .checkout-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .checkout-container {
+            background: var(--cream);
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            direction: rtl;
+        }
+        .checkout-header {
+            background: var(--caramel-dark);
+            color: var(--cream);
+            padding: 30px;
+            text-align: center;
+        }
+        .checkout-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .checkout-steps {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 20px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 20px;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+        }
+        .step.active {
+            opacity: 1;
+        }
+        .step.completed {
+            opacity: 0.7;
+        }
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .step.completed .step-number {
+            background: var(--gold);
+            color: var(--caramel-dark);
+        }
+        .step-label {
+            font-size: 12px;
+        }
+        .step-line {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.3;
+        }
+        .checkout-body {
+            padding: 40px;
+            text-align: right;
+        }
+        .checkout-step-content {
+            display: none;
+        }
+        .checkout-step-content.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--caramel-dark);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--cream-dark);
+            border-radius: 4px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background: white;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .cold-chain-notice {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 1px solid #90CAF9;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .shipping-option {
+            border: 1px solid var(--cream-dark);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .shipping-option:hover,
+        .shipping-option.selected {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .shipping-option input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--caramel-dark);
+        }
+        .shipping-option-details h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--caramel-dark);
+        }
+        .shipping-option-details p {
+            font-size: 12px;
+            color: #888;
+        }
+        .shipping-price {
+            margin-right: auto;
+            font-weight: 600;
+            color: var(--caramel-dark);
+        }
+        .checkout-summary {
+            background: white;
+            border-radius: 4px;
+            padding: 24px;
+            margin-top: 30px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        .summary-row.total {
+            border-top: 2px solid var(--caramel-dark);
+            margin-top: 12px;
+            padding-top: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--caramel-dark);
+        }
+        .checkout-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 16px;
+        }
+        .btn-secondary {
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid var(--caramel-dark);
+            color: var(--caramel-dark);
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+        .btn-primary {
+            padding: 14px 40px;
+            background: var(--caramel-dark);
+            color: var(--cream);
+            border: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .payment-method {
+            border: 1px solid var(--cream-dark);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .payment-method:hover,
+        .payment-method.selected {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .payment-method-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .order-success {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+        .order-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gold);
+            margin: 20px 0;
+            padding: 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            display: inline-block;
+        }
 
-    /* scroll indicator */
-    .scroll-ind {
-      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      font-size: .75rem; color: var(--caramel); letter-spacing: 1px;
-      animation: bob 2s ease-in-out infinite;
-    }
-    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
-    .scroll-ind::after { content:'↓'; font-size:1.1rem; }
+        /* Easter Egg */
+        .secret-recipe-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 24, 16, 0.95);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        .secret-recipe-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .secret-recipe-content {
+            background: var(--cream);
+            max-width: 600px;
+            width: 90%;
+            padding: 50px;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            border: 2px solid var(--gold);
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
+        }
+        .secret-recipe-overlay.active .secret-recipe-content {
+            transform: scale(1);
+        }
+        .truffle-hint {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            font-size: 40px;
+            cursor: pointer;
+            opacity: 0.2;
+            transition: opacity 0.3s;
+            z-index: 100;
+            user-select: none;
+        }
+        .truffle-hint:hover { opacity: 0.5; }
+        .truffle-hint.shake {
+            animation: shake 0.5s ease;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            75% { transform: translateX(5px) rotate(5deg); }
+        }
 
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(28px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
+        .toast {
+            position: fixed;
+            bottom: 40px;
+            right: 50%;
+            transform: translateX(50%) translateY(100px);
+            background: var(--caramel-dark);
+            color: var(--cream);
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 6000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .toast.show {
+            transform: translateX(50%) translateY(0);
+            opacity: 1;
+        }
 
-    /* ══════════════ SECTION WRAPPER ══════════════ */
-    section { padding: 100px 6%; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .section { padding: 60px 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .pdp-grid { grid-template-columns: 1fr; }
+            .pdp-image-section { min-height: 300px; }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding: 0 40px 0 0;
+                justify-content: flex-start;
+            }
+            .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: right;
+                padding: 0;
+            }
+            .timeline-line { right: 10px; }
+            .timeline-dot { right: 10px; }
+            .form-row { grid-template-columns: 1fr; }
+            .payment-methods { grid-template-columns: 1fr; }
+            .gift-grid { grid-template-columns: 1fr; }
+        }
 
-    .section-label {
-      display: inline-block;
-      background: var(--cream-dark); color: var(--caramel-dark);
-      font-size: .78rem; font-weight: 700; letter-spacing: 2.5px;
-      padding: 5px 16px; border-radius: 50px;
-      margin-bottom: 12px; text-transform: uppercase;
-    }
-    .section-title {
-      font-family: 'Amiri', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      color: var(--caramel-dark);
-      line-height: 1.2;
-    }
-    .section-title span { color: var(--caramel); }
-    .section-sub { margin-top: 10px; color: #8a6840; font-size: 1rem; max-width: 560px; line-height: 1.7; }
-
-    /* ══════════════ PRODUCTS ══════════════ */
-    #products { background: var(--ivory); }
-
-    .products-header { text-align: center; margin-bottom: 60px; }
-    .products-header .section-sub { margin: 10px auto 0; }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 28px;
-      max-width: 1200px; margin: 0 auto;
-    }
-
-    .product-card {
-      background: var(--cream);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px var(--shadow);
-      transition: transform .3s, box-shadow .3s;
-      position: relative;
-    }
-    .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(44,26,14,.2); }
-
-    .product-card.featured::before {
-      content: '⭐ الأكثر طلباً';
-      position: absolute; top: 16px; right: 16px;
-      background: var(--gold); color: #fff;
-      font-size: .75rem; font-weight: 700; padding: 4px 12px; border-radius: 50px;
-      z-index: 2;
-    }
-
-    .card-img {
-      width: 100%; height: 220px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 5rem;
-      position: relative; overflow: hidden;
-    }
-    .card-img .emoji-bg {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 7rem; opacity: .18;
-      animation: floatEmoji 4s ease-in-out infinite;
-    }
-    /* صورة المنتج – تملأ منطقة العرض بالكامل */
-    .card-img .product-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
-      transition: transform .4s ease;
-    }
-    .product-card:hover .product-image {
-      transform: scale(1.06);
-    }
-    @keyframes floatEmoji { 0%,100%{transform:scale(1) rotate(-5deg)} 50%{transform:scale(1.06) rotate(5deg)} }
-
-    .caramel-bg  { background: linear-gradient(135deg, #E8A84C 0%, #C97B2C 100%); }
-    .choco-bg    { background: linear-gradient(135deg, #5C3317 0%, #2C1A0E 100%); }
-    .vanilla-bg  { background: linear-gradient(135deg, #FDF6EC 0%, #E8D5A3 100%); }
-    .rose-bg     { background: linear-gradient(135deg, #F4C8C8 0%, #E8916A 100%); }
-    .mixed-bg    { background: linear-gradient(135deg, #D4A843 0%, #C97B2C 100%); }
-
-    .card-body { padding: 22px 22px 28px; }
-    .card-name {
-      font-family: 'Amiri', serif; font-size: 1.4rem;
-      color: var(--caramel-dark); margin-bottom: 6px;
-    }
-    .card-desc { font-size: .9rem; color: #8a6840; line-height: 1.6; margin-bottom: 16px; }
-    .card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .card-price {
-      font-family: 'Amiri', serif; font-size: 1.6rem;
-      color: var(--caramel); font-weight: 700;
-    }
-    .card-price span { font-size: .85rem; font-weight: 400; color: #8a6840; }
-
-    .btn-order {
-      background: var(--caramel-dark); color: #fff;
-      border: none; padding: 10px 20px; border-radius: 50px;
-      font-family: 'Tajawal', sans-serif;
-      font-size: .9rem; font-weight: 700; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-      transition: background .25s, transform .2s;
-    }
-    .btn-order:hover { background: var(--caramel); transform: scale(1.04); }
-
-    /* ══════════════ FEATURES ══════════════ */
-    #features {
-      background: var(--chocolate);
-      color: var(--cream);
-      position: relative; overflow: hidden;
-    }
-    #features::before {
-      content: '';
-      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
-      width: 700px; height: 400px;
-      background: radial-gradient(ellipse, rgba(201,123,44,.25) 0%, transparent 70%);
-    }
-
-    .features-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .features-text .section-title { color: var(--cream); }
-    .features-text .section-label { background: rgba(255,255,255,.1); color: var(--caramel-light); }
-    .features-text .section-sub { color: rgba(253,246,236,.7); }
-
-    .features-list { display: flex; flex-direction: column; gap: 20px; margin-top: 36px; }
-    .feature-item {
-      display: flex; align-items: flex-start; gap: 16px;
-    }
-    .feature-icon {
-      min-width: 48px; height: 48px;
-      background: rgba(201,123,44,.2); border-radius: 14px;
-      display: grid; place-items: center; font-size: 1.4rem;
-      border: 1px solid rgba(201,123,44,.35);
-    }
-    .feature-item h4 { font-size: 1rem; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
-    .feature-item p  { font-size: .88rem; color: rgba(253,246,236,.65); line-height: 1.6; }
-
-    .features-card {
-      background: rgba(253,246,236,.06);
-      border: 1px solid rgba(201,123,44,.25);
-      border-radius: 28px; padding: 40px;
-      backdrop-filter: blur(8px);
-      text-align: center;
-    }
-    .features-card .big-emoji { font-size: 4rem; margin-bottom: 16px; }
-    .features-card h3 { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--caramel-light); margin-bottom: 10px; }
-    .features-card p  { color: rgba(253,246,236,.7); font-size: .95rem; line-height: 1.7; margin-bottom: 24px; }
-    .features-card .wa-link {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #25D366; color: #fff;
-      padding: 14px 28px; border-radius: 50px;
-      font-weight: 700; text-decoration: none; font-size: 1rem;
-      box-shadow: 0 6px 24px rgba(37,211,102,.4);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .features-card .wa-link:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(37,211,102,.5); }
-    .features-card .wa-link svg { width: 22px; height: 22px; fill: #fff; }
-
-    /* ══════════════ OCCASIONS ══════════════ */
-    #occasions { background: var(--cream); }
-    .occasions-header { text-align: center; margin-bottom: 60px; }
-    .occasions-header .section-sub { margin: 10px auto 0; }
-
-    .occasions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px; max-width: 1000px; margin: 0 auto;
-    }
-    .occasion-card {
-      background: var(--ivory);
-      border-radius: 20px; padding: 32px 20px;
-      text-align: center;
-      border: 1.5px solid transparent;
-      transition: all .3s; cursor: default;
-    }
-    .occasion-card:hover {
-      border-color: var(--caramel);
-      transform: translateY(-6px);
-      box-shadow: 0 10px 32px var(--shadow);
-    }
-    .occasion-card .occ-icon { font-size: 2.8rem; margin-bottom: 12px; }
-    .occasion-card h4 { font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--caramel-dark); margin-bottom: 6px; }
-    .occasion-card p { font-size: .83rem; color: #8a6840; line-height: 1.5; }
-
-    /* ══════════════ DELIVERY ══════════════ */
-    #delivery {
-      background: linear-gradient(135deg, var(--caramel-dark) 0%, var(--caramel) 100%);
-      color: #fff; text-align: center;
-    }
-    #delivery .section-title { color: #fff; }
-    #delivery .section-label { background: rgba(255,255,255,.2); color: #fff; }
-    #delivery .section-sub { color: rgba(255,255,255,.8); margin: 10px auto 0; }
-
-    .delivery-badges {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 48px;
-    }
-    .d-badge {
-      background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.35);
-      backdrop-filter: blur(8px);
-      border-radius: 20px; padding: 28px 32px; min-width: 180px;
-      transition: background .25s, transform .25s;
-    }
-    .d-badge:hover { background: rgba(255,255,255,.22); transform: translateY(-4px); }
-    .d-badge .d-icon { font-size: 2.4rem; margin-bottom: 10px; }
-    .d-badge h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
-    .d-badge p  { font-size: .82rem; opacity: .8; }
-
-    /* ══════════════ ORDER SECTION ══════════════ */
-    #order {
-      background: var(--ivory);
-      text-align: center;
-    }
-    .order-box {
-      max-width: 600px; margin: 0 auto;
-      background: var(--cream);
-      border-radius: 28px;
-      padding: 56px 40px;
-      box-shadow: 0 8px 48px var(--shadow);
-      border: 1.5px solid rgba(201,123,44,.15);
-    }
-    .order-box .big-icon { font-size: 4.5rem; margin-bottom: 20px; }
-    .order-box h2 {
-      font-family: 'Amiri', serif; font-size: 2.2rem;
-      color: var(--caramel-dark); margin-bottom: 10px;
-    }
-    .order-box p { color: #8a6840; font-size: 1rem; line-height: 1.7; margin-bottom: 32px; }
-
-    .order-steps {
-      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;
-    }
-    .step {
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      min-width: 90px;
-    }
-    .step-num {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--caramel); color: #fff;
-      display: grid; place-items: center; font-weight: 700; font-size: .95rem;
-    }
-    .step-label { font-size: .8rem; color: #8a6840; text-align: center; }
-    .step-arrow { color: var(--caramel); font-size: 1.2rem; align-self: center; margin-top: -22px; }
-
-    .wa-btn-big {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: #25D366; color: #fff;
-      padding: 18px 44px; border-radius: 50px;
-      font-size: 1.2rem; font-weight: 800; text-decoration: none;
-      box-shadow: 0 8px 32px rgba(37,211,102,.4);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .wa-btn-big:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(37,211,102,.55); }
-    .wa-btn-big svg { width: 26px; height: 26px; fill: #fff; }
-
-    /* ══════════════ FOOTER ══════════════ */
-    footer {
-      background: var(--chocolate); color: rgba(253,246,236,.8);
-      text-align: center; padding: 40px 6%;
-    }
-    .footer-logo {
-      font-family: 'Amiri', serif; font-size: 2rem;
-      color: var(--caramel); margin-bottom: 10px;
-    }
-    footer p { font-size: .88rem; opacity: .7; line-height: 1.8; }
-    .footer-wa {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: #25D366; text-decoration: none; font-weight: 700; margin-top: 14px;
-      font-size: .95rem; transition: opacity .2s;
-    }
-    .footer-wa:hover { opacity: .8; }
-    .footer-wa svg { width: 18px; height: 18px; fill: #25D366; }
-
-    /* ══════════════ RESPONSIVE ══════════════ */
-    @media (max-width: 768px) {
-      .features-inner { grid-template-columns: 1fr; gap: 48px; }
-      .nav-links { display: none; }
-      .hero-stats { gap: 28px; }
-      .order-box { padding: 36px 24px; }
-    }
-
-    /* WhatsApp SVG icon inline helper */
-    .wa-icon { display:inline-flex; align-items:center; }
-  </style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
-<!-- ══════════════ NAVBAR ══════════════ -->
-<nav id="navbar">
-  <div class="nav-logo"><span>كراميسك</span></div>
-  <ul class="nav-links">
-    <li><a href="#products">منتجاتنا</a></li>
-    <li><a href="#occasions">المناسبات</a></li>
-    <li><a href="#delivery">التوصيل</a></li>
-    <li><a href="#order">اطلب الآن</a></li>
-  </ul>
-  <a class="nav-wa" href="https://wa.me/218917021437" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    واتساب
-  </a>
-</nav>
-
-<!-- ══════════════ HERO ══════════════ -->
-<section class="hero" id="home">
-  <div>
-    <div class="hero-badge">🍮 متجر كراميسك – طرابلس ليبيا</div>
-    <h1>حلاوة <em>الكراميل</em><br>بكل لحظة</h1>
-    <p class="hero-sub">
-      كيك وكعك مصنوع بعشق، يُوصَّل إلى بابك مجاناً داخل طرابلس.
-      اطلب الآن واستمتع بتجربة حلوى لا تُنسى.
-    </p>
-    <div class="hero-btns">
-      <a class="btn-primary" href="#products">🎂 شوف منتجاتنا</a>
-      <a class="btn-secondary" href="#order">اطلب الآن</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">+500</div><div class="stat-label">طلب موصَّل</div></div>
-      <div class="stat"><div class="stat-num">5 ⭐</div><div class="stat-label">تقييم العملاء</div></div>
-      <div class="stat"><div class="stat-num">مجاني</div><div class="stat-label">التوصيل داخل طرابلس</div></div>
-    </div>
-  </div>
-  <div class="scroll-ind">تصفّح</div>
-</section>
-
-<!-- ══════════════ PRODUCTS ══════════════ -->
-<section id="products">
-  <div class="products-header">
-    <div class="section-label">🍰 منتجاتنا</div>
-    <h2 class="section-title">أحلى <span>تشكيلة</span> كيك وكعك</h2>
-    <p class="section-sub">كل قطعة مصنوعة يدوياً بأجود المكونات وبلمسة كراميل أصيلة</p>
-  </div>
-  <div class="products-grid">
-
-    <!-- 1 -->
-    <div class="product-card featured">
-      <div class="card-img caramel-bg">
-        <img class="product-image" src="caramisek.jpg" alt="كيك كراميل كلاسيكي" />
-        <div class="emoji-bg">🍮</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">كيك كراميل كلاسيكي</div>
-        <p class="card-desc">كيك ناعم ومحشو بكريمة الكراميل، مغطى بصوص الكراميل الذهبي. الأكثر طلباً!</p>
-        <div class="card-footer">
-          <div class="card-price">75 <span>دينار</span></div>
-          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك كراميل كلاسيكي" target="_blank" rel="noopener">
-            🛒 اطلب
-          </a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="nav-logo">
+            <span class="ar">كراميسك</span>
+            <span>Karamisc</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#seasonal">الموسمية</a></li>
+            <li><a href="#products">جميع الكيكات</a></li>
+            <li><a href="#timeline">طريقة التحضير</a></li>
+            <li><a href="#gifts">صناديق الهدايا</a></li>
+        </ul>
+        <div class="nav-cart" id="navCart">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
         </div>
-      </div>
-    </div>
+    </nav>
 
-    <!-- 2 -->
-    <div class="product-card">
-      <div class="card-img choco-bg">
-        <img class="product-image" src="shak-1.jpg" alt="كيك الشوكولاتة والكراميل" />
-        <div class="emoji-bg">🍫</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">كيك الشوكولاتة والكراميل</div>
-        <p class="card-desc">إسفنجة الشوكولاتة الغنية مع طبقات الكراميل المذاب، تجربة لا مثيل لها.</p>
-        <div class="card-footer">
-          <div class="card-price">90 <span>دينار</span></div>
-          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك الشوكولاتة والكراميل" target="_blank" rel="noopener">
-            🛒 اطلب
-          </a>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-video-container">
+            <div class="caramel-glow"></div>
+            <canvas id="cocoaCanvas"></canvas>
         </div>
-      </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="product-card">
-      <div class="card-img vanilla-bg">
-        <img class="product-image" src="shak-2.jpg" alt="كيك الفانيلا بالكراميل" />
-        <div class="emoji-bg">🎂</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">كيك الفانيلا بالكراميل</div>
-        <p class="card-desc">فانيلا فاخرة مع فروست الكراميل الخفيف، ناعم على اللسان ومثالي للمناسبات.</p>
-        <div class="card-footer">
-          <div class="card-price">75 <span>دينار</span></div>
-          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كيك الفانيلا بالكراميل" target="_blank" rel="noopener">
-            🛒 اطلب
-          </a>
+        <div class="hero-content">
+            <h1 class="hero-brand">
+                Karamisc
+                <span class="ar-brand">كراميسك</span>
+            </h1>
+            <p class="hero-tagline">كيك الكراميل بجميع أنواعه</p>
+            <a href="#products" class="hero-cta">استكشف القائمة</a>
         </div>
-      </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="product-card">
-      <div class="card-img rose-bg">
-        <img class="product-image" src="shak-3.jpg" alt="كب كيك الكراميل" />
-        <div class="emoji-bg">🧁</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">كب كيك الكراميل</div>
-        <p class="card-desc">12 حبة كب كيك مميزة مع كريمة الكراميل، مثالية للمجالس والأحزاب.</p>
-        <div class="card-footer">
-          <div class="card-price">80 <span>دينار</span></div>
-          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: كب كيك الكراميل" target="_blank" rel="noopener">
-            🛒 اطلب
-          </a>
+        <div class="scroll-indicator">
+            <span>اسحب للأسفل</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- 5 -->
-    <div class="product-card" style="grid-column: 1 / -1; max-width: 560px; margin: 0 auto; width: 100%;">
-      <div class="card-img mixed-bg">
-        <img class="product-image" src="shak-4.jpg" alt="بوكس الكعك المشكّل" />
-        <div class="emoji-bg">🎁</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">بوكس الكعك المشكّل</div>
-        <p class="card-desc">صندوق مميز من 16 قطعة كعك متنوعة بالكراميل والشوكولاتة والفانيلا – هدية مثالية لأي مناسبة.</p>
-        <div class="card-footer">
-          <div class="card-price">110 <span>دينار</span></div>
-          <a class="btn-order" href="https://wa.me/218917021437?text=مرحباً، أريد الطلب: بوكس الكعك المشكّل" target="_blank" rel="noopener">
-            🛒 اطلب
-          </a>
+    <!-- Seasonal Section -->
+    <section class="seasonal-section" id="seasonal">
+        <div class="section">
+            <h2 class="section-title">موسمية</h2>
+            <p class="section-subtitle">عروض محدودة</p>
+            <div class="seasonal-grid" id="seasonalGrid"></div>
         </div>
-      </div>
-    </div>
+    </section>
 
-  </div>
-
-  <!-- ══ زر المنتجات الجديدة ══ -->
-  <div style="text-align:center; margin-top: 52px;">
-    <p style="color:#8a6840; font-size:1rem; margin-bottom:16px;">✨ اكتشف تشكيلتنا الجديدة من النكهات الحصرية</p>
-    <a href="New.html"
-       style="display:inline-flex; align-items:center; gap:10px;
-              background: linear-gradient(135deg, #7A4510 0%, #C97B2C 100%);
-              color:#fff; text-decoration:none;
-              padding:16px 40px; border-radius:50px;
-              font-family:'Tajawal',sans-serif; font-size:1.05rem; font-weight:800;
-              box-shadow: 0 8px 28px rgba(201,123,44,.45);
-              transition: transform .2s, box-shadow .2s;"
-       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 14px 36px rgba(201,123,44,.6)'"
-       onmouseout="this.style.transform='';this.style.boxShadow='0 8px 28px rgba(201,123,44,.45)'">
-      🌟 شوف المنتجات الجديدة
-    </a>
-  </div>
-
-</section>
-
-<!-- ══════════════ FEATURES ══════════════ -->
-<section id="features">
-  <div class="features-inner">
-    <div class="features-text">
-      <div class="section-label">✦ لماذا كراميسك؟</div>
-      <h2 class="section-title">جودة تشعر<br><span>بها في كل قضمة</span></h2>
-      <p class="section-sub">نؤمن أن كل حلوى قصة؛ نصنعها بعناية واحتراف لتكون لحظتك الحلوة لا تُنسى.</p>
-      <div class="features-list">
-        <div class="feature-item">
-          <div class="feature-icon">🥚</div>
-          <div>
-            <h4>مكونات طبيعية 100%</h4>
-            <p>نستخدم أجود المكونات بدون مواد حافظة صناعية.</p>
-          </div>
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="section">
+            <h2 class="section-title">جميع أنواع الكيك</h2>
+            <p class="section-subtitle">قائمتنا الكاملة</p>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">الكل</button>
+                <button class="filter-tab" data-filter="cake">كيك تقليدي</button>
+                <button class="filter-tab" data-filter="cheesecake">تشيز كيك</button>
+                <button class="filter-tab" data-filter="tart">تارت</button>
+                <button class="filter-tab" data-filter="gift">هدايا</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon">👩‍🍳</div>
-          <div>
-            <h4>صُنع يدوياً بعشق</h4>
-            <p>كل قطعة تُحضَّر بعناية فائقة من طاهية محترفة.</p>
-          </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section" id="timeline">
+        <div class="section">
+            <h2 class="section-title">رحلة الكراميل</h2>
+            <p class="section-subtitle">من المكونات إلى الكيك</p>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-number">01</div>
+                        <h3 class="timeline-title">اختيار المكونات</h3>
+                        <p class="timeline-desc">ننتقي أجود أنواع الزبدة والسكر البني والقشطة الطازجة لنضمن نكهة كراميل غنية لا تُقاوم.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-number">02</div>
+                        <h3 class="timeline-title">تحضير الكراميل</h3>
+                        <p class="timeline-desc">يُطهى السكر بعناية على درجة حرارة مضبوطة حتى يصل إلى اللون الذهبي المثالي، ثم تُضاف الزبدة والقشدة لتكوين صلصة حريرية.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-number">03</div>
+                        <h3 class="timeline-title">خبز الطبقات</h3>
+                        <p class="timeline-desc">تُخبز كل طبقة من الكيك الإسفنجي على حدة حتى تصبح هشة وذهبية، ثم تُشبع بشراب الكراميل الدافئ.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-number">04</div>
+                        <h3 class="timeline-title">تجميع الكيك</h3>
+                        <p class="timeline-desc">تُرص الطبقات مع كريمة الزبدة بالكراميل وتُغطى بسخاء، ثم تُزين بالمكسرات أو رقائق الكراميل المقرمشة.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-number">05</div>
+                        <h3 class="timeline-title">التغليف والتقديم</h3>
+                        <p class="timeline-desc">يُعبأ كل قالب بعناية في صندوق أنيق ليصل إليك طازجًا وجاهزًا للاستمتاع في مناسبتك الخاصة.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon">📦</div>
-          <div>
-            <h4>تغليف أنيق وفاخر</h4>
-            <p>جاهز للإهداء – تغليف مميز يليق بالمناسبات.</p>
-          </div>
+    </section>
+
+    <!-- Gift Guide -->
+    <section class="gift-section" id="gifts">
+        <div class="section">
+            <h2 class="section-title">صناديق الهدايا</h2>
+            <p class="section-subtitle">لحظات تستحق كراميسك</p>
+            <div class="gift-grid" id="giftGrid"></div>
         </div>
-        <div class="feature-item">
-          <div class="feature-icon">⏱️</div>
-          <div>
-            <h4>توصيل سريع ومجاني</h4>
-            <p>نوصّل طلبك خلال 24 ساعة داخل طرابلس مجاناً.</p>
-          </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">كراميسك Karamisc</div>
+                <p class="footer-desc">نحو كيك كراميل لا يُنسى. نمزج بين الوصفات التقليدية والجودة العصرية لنقدم لك تجربة طعم استثنائية في كل قضمة.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">تسوق</h4>
+                <ul class="footer-links">
+                    <li><a href="#products">جميع الكيكات</a></li>
+                    <li><a href="#seasonal">العروض الموسمية</a></li>
+                    <li><a href="#gifts">الهدايا</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">عن كراميسك</h4>
+                <ul class="footer-links">
+                    <li><a href="#timeline">طريقة التحضير</a></li>
+                    <li><a href="#">المكونات</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">مساعدة</h4>
+                <ul class="footer-links">
+                    <li><a href="#">سياسة التوصيل</a></li>
+                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#">معلومات الحساسية</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
+        <div class="footer-bottom">
+            <span>© 2026 كراميسك. جميع الحقوق محفوظة.</span>
+            <span>صُنع بشغف في الرياض</span>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3 class="cart-title">سلة المشتريات</h3>
+            <button class="cart-close" id="cartClose">×</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="free-shipping-bar">
+                <div class="free-shipping-progress" id="shippingProgress"></div>
+            </div>
+            <p class="free-shipping-text" id="shippingText">توصيل مجاني للطلبات فوق 200 ريال</p>
+            <div class="gift-wrap-option">
+                <input type="checkbox" id="giftWrap">
+                <label for="giftWrap">تغليف هدايا فاخر (+15 ريال)</label>
+            </div>
+            <textarea class="gift-message" id="giftMessage" rows="3" placeholder="أضف رسالة للهدية..."></textarea>
+            <div class="cart-subtotal">
+                <span>المجموع</span>
+                <span id="cartSubtotal">0 ريال</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">إتمام الشراء</button>
+        </div>
     </div>
 
-    <div class="features-card">
-      <div class="big-emoji">💬</div>
-      <h3>اطلب عبر واتساب</h3>
-      <p>
-        تواصل معنا مباشرةً على واتساب لتخصيص طلبك، الاستفسار عن الأسعار،
-        أو تحديد موعد التوصيل. نرد في أسرع وقت!
-      </p>
-      <a class="wa-link" href="https://wa.me/218917021437" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        ابدأ الطلب الآن
-      </a>
+    <!-- Product Detail Modal -->
+    <div class="pdp-overlay" id="pdpOverlay">
+        <div class="pdp-container" id="pdpContainer">
+            <button class="pdp-close" id="pdpClose">×</button>
+            <div class="pdp-grid">
+                <div class="pdp-image-section">
+                    <div class="pdp-emoji" id="pdpEmoji">🍰</div>
+                </div>
+                <div class="pdp-info">
+                    <h2 class="pdp-name" id="pdpName">اسم المنتج</h2>
+                    <p class="pdp-origin" id="pdpOrigin">النوع</p>
+                    <div class="pdp-price" id="pdpPrice">0 ريال</div>
+                    <div class="pdp-tabs">
+                        <button class="pdp-tab active" data-tab="flavor">الوصف</button>
+                        <button class="pdp-tab" data-tab="tasting">ملاحظات التذوق</button>
+                        <button class="pdp-tab" data-tab="ingredients">المكونات</button>
+                        <button class="pdp-tab" data-tab="pairings">يقترح مع</button>
+                        <button class="pdp-tab" data-tab="reviews">التقييمات</button>
+                    </div>
+                    <div class="pdp-tab-content active" id="tab-flavor">
+                        <div class="flavor-map-visual" id="flavorMap"></div>
+                    </div>
+                    <div class="pdp-tab-content" id="tab-tasting">
+                        <div id="tastingNotes"></div>
+                    </div>
+                    <div class="pdp-tab-content" id="tab-ingredients">
+                        <div id="ingredientsContent"></div>
+                    </div>
+                    <div class="pdp-tab-content" id="tab-pairings">
+                        <div id="pairingsContent"></div>
+                    </div>
+                    <div class="pdp-tab-content" id="tab-reviews">
+                        <div id="reviewsContent"></div>
+                    </div>
+                    <div class="pdp-add-cart">
+                        <div class="pdp-qty">
+                            <button id="pdpQtyMinus">−</button>
+                            <span id="pdpQty">1</span>
+                            <button id="pdpQtyPlus">+</button>
+                        </div>
+                        <button class="pdp-add-btn" id="pdpAddBtn">أضف إلى السلة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
 
-<!-- ══════════════ OCCASIONS ══════════════ -->
-<section id="occasions">
-  <div class="occasions-header">
-    <div class="section-label">🎉 مناسباتنا</div>
-    <h2 class="section-title">نخدمك في كل <span>مناسبة</span></h2>
-    <p class="section-sub">طلبيات مخصصة للمناسبات والمقاهي والشركات بأسعار خاصة</p>
-  </div>
-  <div class="occasions-grid">
-    <div class="occasion-card">
-      <div class="occ-icon">🎂</div>
-      <h4>أعياد الميلاد</h4>
-      <p>كيك مخصص مع اسم العيد والزينة المطلوبة</p>
+    <!-- Checkout Modal -->
+    <div class="checkout-overlay" id="checkoutOverlay">
+        <div class="checkout-container">
+            <div class="checkout-header">
+                <h2>إتمام الشراء</h2>
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1"><div class="step-number">1</div><span class="step-label">المعلومات</span></div>
+                    <div class="step-line"></div>
+                    <div class="step" data-step="2"><div class="step-number">2</div><span class="step-label">التوصيل</span></div>
+                    <div class="step-line"></div>
+                    <div class="step" data-step="3"><div class="step-number">3</div><span class="step-label">الدفع</span></div>
+                    <div class="step-line"></div>
+                    <div class="step" data-step="4"><div class="step-number">4</div><span class="step-label">تأكيد</span></div>
+                </div>
+            </div>
+            <div class="checkout-body">
+                <div class="checkout-step-content active" id="checkout-step-1">
+                    <div class="form-row">
+                        <div class="form-group"><label>الاسم الأول</label><input type="text" id="firstName"></div>
+                        <div class="form-group"><label>الاسم الأخير</label><input type="text" id="lastName"></div>
+                    </div>
+                    <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="email"></div>
+                    <div class="form-group"><label>رقم الجوال</label><input type="tel" id="phone"></div>
+                    <div class="checkout-actions"><div></div><button class="btn-primary" onclick="nextStep(2)">متابعة</button></div>
+                </div>
+                <div class="checkout-step-content" id="checkout-step-2">
+                    <div class="form-group"><label>العنوان التفصيلي</label><input type="text" id="address" placeholder="المدينة / الحي / الشارع"></div>
+                    <div class="form-row">
+                        <div class="form-group"><label>المدينة</label><input type="text" id="city"></div>
+                        <div class="form-group"><label>الرمز البريدي</label><input type="text" id="postal"></div>
+                    </div>
+                    <div class="shipping-option selected" onclick="selectShipping(this, 0)">
+                        <input type="radio" name="shipping" checked><div class="shipping-option-details"><h4>توصيل عادي</h4><p>2-3 أيام عمل</p></div><div class="shipping-price">مجاني</div>
+                    </div>
+                    <div class="shipping-option" onclick="selectShipping(this, 25)">
+                        <input type="radio" name="shipping"><div class="shipping-option-details"><h4>توصيل سريع</h4><p>في نفس اليوم</p></div><div class="shipping-price">+25 ريال</div>
+                    </div>
+                    <div class="checkout-actions"><button class="btn-secondary" onclick="prevStep(1)">رجوع</button><button class="btn-primary" onclick="nextStep(3)">متابعة</button></div>
+                </div>
+                <div class="checkout-step-content" id="checkout-step-3">
+                    <div class="payment-methods">
+                        <div class="payment-method selected" onclick="selectPayment(this)"><div class="payment-method-icon">💳</div><div>بطاقة ائتمان</div></div>
+                        <div class="payment-method" onclick="selectPayment(this)"><div class="payment-method-icon">📱</div><div>مدى / أبل باي</div></div>
+                    </div>
+                    <div class="checkout-summary">
+                        <div class="summary-row"><span>المجموع الفرعي</span><span id="summarySubtotal">0 ريال</span></div>
+                        <div class="summary-row"><span>التوصيل</span><span id="summaryShipping">0 ريال</span></div>
+                        <div class="summary-row"><span>تغليف الهدايا</span><span id="summaryGift">0 ريال</span></div>
+                        <div class="summary-row total"><span>الإجمالي</span><span id="summaryTotal">0 ريال</span></div>
+                    </div>
+                    <div class="checkout-actions"><button class="btn-secondary" onclick="prevStep(2)">رجوع</button><button class="btn-primary" onclick="nextStep(4)">تأكيد الطلب</button></div>
+                </div>
+                <div class="checkout-step-content" id="checkout-step-4">
+                    <div class="order-success">
+                        <div class="success-icon">🎉</div>
+                        <h3>تم الطلب بنجاح!</h3>
+                        <p>شكراً لك. سيتم تجهيز طلبك بعناية.</p>
+                        <div class="order-number" id="orderNumber">#KR-2026-4427</div>
+                        <button class="btn-primary" style="margin-top:24px;" onclick="closeCheckout()">إنهاء</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="occasion-card">
-      <div class="occ-icon">💍</div>
-      <h4>الأعراس والخطوبة</h4>
-      <p>تصاميم راقية تناسب أجمل لحظاتكم</p>
-    </div>
-    <div class="occasion-card">
-      <div class="occ-icon">☕</div>
-      <h4>المقاهي والمطاعم</h4>
-      <p>توريد منتظم بأسعار الجملة للمحلات التجارية</p>
-    </div>
-    <div class="occasion-card">
-      <div class="occ-icon">🎁</div>
-      <h4>الهدايا والتوزيعات</h4>
-      <p>بوكسات هدايا فاخرة معبأة بشكل أنيق</p>
-    </div>
-    <div class="occasion-card">
-      <div class="occ-icon">🏢</div>
-      <h4>الشركات والمؤسسات</h4>
-      <p>طلبيات ضخمة لاجتماعات وفعاليات الشركات</p>
-    </div>
-  </div>
-</section>
 
-<!-- ══════════════ DELIVERY ══════════════ -->
-<section id="delivery">
-  <div class="section-label">🚚 التوصيل</div>
-  <h2 class="section-title">نوصّل إلى بابك – <span style="color:var(--cream-dark)">مجاناً!</span></h2>
-  <p class="section-sub">خدمة توصيل مجانية داخل طرابلس لجميع الطلبات. سرعة في الخدمة وضمان الجودة.</p>
-  <div class="delivery-badges">
-    <div class="d-badge">
-      <div class="d-icon">🆓</div>
-      <h4>توصيل مجاني</h4>
-      <p>داخل طرابلس بدون أي رسوم إضافية</p>
+    <!-- Secret Recipe Easter Egg -->
+    <div class="secret-recipe-overlay" id="secretOverlay">
+        <div class="secret-recipe-content">
+            <h3 class="secret-title">الوصفة السرية لكراميسك</h3>
+            <p class="secret-subtitle">صوص الكراميل الذهبي</p>
+            <div class="secret-recipe-text">
+                سكر بني ... 200 غ<br>
+                زبدة ... 100 غ<br>
+                قشطة ... 120 مل<br>
+                فانيليا ... ملعقة صغيرة<br>
+                رشة ملح بحري<br>
+                يُذاب السكر على نار هادئة ثم تضاف الزبدة والقشطة تدريجياً مع التحريك حتى يصبح الخليط ناعماً ولامعاً.
+            </div>
+            <button class="secret-close" onclick="closeSecret()">احتفظ بالسر</button>
+        </div>
     </div>
-    <div class="d-badge">
-      <div class="d-icon">⏰</div>
-      <h4>24 ساعة</h4>
-      <p>استلم طلبك خلال يوم واحد</p>
-    </div>
-    <div class="d-badge">
-      <div class="d-icon">📍</div>
-      <h4>طرابلس كاملة</h4>
-      <p>جميع مناطق العاصمة مشمولة</p>
-    </div>
-    <div class="d-badge">
-      <div class="d-icon">💯</div>
-      <h4>ضمان الجودة</h4>
-      <p>يصلك الطلب طازجاً وبحالة مثالية</p>
-    </div>
-  </div>
-</section>
+    <div class="truffle-hint" id="truffleHint" title="اضغط عدة مرات...">🍮</div>
 
-<!-- ══════════════ ORDER ══════════════ -->
-<section id="order">
-  <div class="order-box">
-    <div class="big-icon">🍮</div>
-    <h2>اطلب منتجك الآن</h2>
-    <p>
-      الطلب سهل وسريع! تواصل معنا على واتساب، اختر منتجك، وحدد موعد التوصيل –
-      سنوصّله إليك مجاناً داخل طرابلس.
-    </p>
-    <div class="order-steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-label">اضغط واتساب</div>
-      </div>
-      <div class="step-arrow">←</div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-label">اختر منتجك</div>
-      </div>
-      <div class="step-arrow">←</div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-label">حدد موعد التوصيل</div>
-      </div>
-      <div class="step-arrow">←</div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-label">استلم طلبك 🎉</div>
-      </div>
-    </div>
-    <a class="wa-btn-big" href="https://wa.me/218917021437?text=مرحباً كراميسك 🍮 أريد الطلب" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      اطلب عبر واتساب
-    </a>
-  </div>
-</section>
+    <div class="toast" id="toast"><span id="toastMessage">تمت الإضافة للسلة</span></div>
 
-<!-- ══════════════ FOOTER ══════════════ -->
-<footer>
-  <div class="footer-logo">كراميسك 🍮</div>
-  <p>
-    متجر كراميسك – طرابلس، ليبيا<br>
-    تخصص في كيك وكعك الكراميل الفاخر | توصيل مجاني داخل طرابلس
-  </p>
-  <a class="footer-wa" href="https://wa.me/218917021437" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    +218 91 702 1437
-  </a>
-  <p style="margin-top:20px; font-size:.78rem; opacity:.45;">© 2025 كراميسك. جميع الحقوق محفوظة.</p>
-</footer>
+    <script>
+        // ==================== DATA ====================
+        const products = [
+            {
+                id: 1,
+                name: "كيكة الكراميل الكلاسيكية",
+                origin: "طبقات إسفنجية بصوص الكراميل",
+                price: 120,
+                category: "cake",
+                emoji: "🍰",
+                isGift: false,
+                seasonal: false,
+                flavor: { sweet: 85, rich: 90, nutty: 30, creamy: 80 },
+                tasting: "كيك إسفنجي فانيلا مغطى بطبقات من كريمة الزبدة بالكراميل ومزين بالجوز المحمص. نكهة غنية ومتوازنة مع لمسة من الفانيليا.",
+                ingredients: "دقيق، زبدة، سكر بني، قشطة، بيض، فانيليا، جوز، بيكنج باودر",
+                allergens: ["جلوتين", "مكسرات", "بيض", "ألبان"],
+                pairings: [{ icon: "☕", name: "قهوة عربية" }, { icon: "🍵", name: "شاي كرك" }],
+                reviews: [{ name: "نورة", rating: 5, text: "ألذ كيكة كراميل تذوقتها! الكريمة ناعمة والنكهة رهيبة." }]
+            },
+            {
+                id: 2,
+                name: "تشيز كيك الكراميل",
+                origin: "تشيز كيك بارد بصوص الكراميل",
+                price: 140,
+                category: "cheesecake",
+                emoji: "🧀",
+                isGift: false,
+                seasonal: false,
+                flavor: { sweet: 70, rich: 95, tangy: 40, creamy: 95 },
+                tasting: "قاعدة بسكويت مقرمش مع حشوة جبن كريمي غنية، مغطاة بطبقة كثيفة من صوص الكراميل المملح. قوام كريمي يذوب في الفم.",
+                ingredients: "بسكويت، زبدة، جبن كريمي، سكر، قشطة، كراميل، ملح بحري",
+                allergens: ["جلوتين", "ألبان", "بيض"],
+                pairings: [{ icon: "🍓", name: "توت طازج" }, { icon: "☕", name: "اسبريسو" }],
+                reviews: [{ name: "سلمان", rating: 5, text: "الكراميل المملح ياخذ العقل! حلاوة متوازنة جداً." }]
+            },
+            {
+                id: 3,
+                name: "براوني الكراميل",
+                origin: "براوني شوكولاتة بصوص الكراميل",
+                price: 90,
+                category: "cake",
+                emoji: "🍫",
+                isGift: false,
+                seasonal: false,
+                flavor: { sweet: 80, rich: 90, chocolatey: 85, gooey: 70 },
+                tasting: "براوني شوكولاتة داكنة كثيفة مع عروق من صوص الكراميل اللزج، مرشوشة بملح البحر. مثالية لمحبي الشوكولاتة.",
+                ingredients: "شوكولاتة داكنة، زبدة، سكر، بيض، دقيق، كراميل",
+                allergens: ["جلوتين", "بيض", "ألبان"],
+                pairings: [{ icon: "🥛", name: "حليب بارد" }],
+                reviews: [{ name: "ريم", rating: 4, text: "لذيذ جداً، لكن الكمية صغيرة شوي." }]
+            },
+            {
+                id: 4,
+                name: "تارت الكراميل بالتمر",
+                origin: "موسمي - تارت الكراميل والتمر",
+                price: 110,
+                category: "tart",
+                emoji: "🥧",
+                isGift: false,
+                seasonal: true,
+                flavor: { sweet: 90, rich: 80, fruity: 70, nutty: 60 },
+                tasting: "تارت محشو بكريمة التمر والكراميل ومغطى بطبقة من الكراميل المقرمش. حلاوة طبيعية من التمر مع عمق الكراميل.",
+                ingredients: "دقيق، زبدة، تمر، كراميل، قشطة، لوز",
+                allergens: ["جلوتين", "مكسرات", "ألبان"],
+                pairings: [{ icon: "🍵", name: "شاي مغربي" }],
+                reviews: [{ name: "عبدالله", rating: 5, text: "التمر مع الكراميل فكرة عبقرية! طعم رمضاني رائع." }]
+            },
+            {
+                id: 5,
+                name: "كب كيك الكراميل (6 حبات)",
+                origin: "كب كيك صغير بصوص الكراميل",
+                price: 80,
+                category: "cake",
+                emoji: "🧁",
+                isGift: false,
+                seasonal: false,
+                flavor: { sweet: 85, rich: 70, creamy: 85, fun: 100 },
+                tasting: "كب كيك فانيلا طري محشو بصوص الكراميل ومغطى بكريمة الزبدة الذهبية. مناسب للحفلات.",
+                ingredients: "دقيق، زبدة، سكر، بيض، كراميل، قشطة",
+                allergens: ["جلوتين", "بيض", "ألبان"],
+                pairings: [{ icon: "🧃", name: "عصير برتقال" }],
+                reviews: [{ name: "ليان", rating: 5, text: "الأطفال عشقوها! الحشوة مفاجأة حلوة." }]
+            },
+            {
+                id: 6,
+                name: "طبق كيك الكراميل المشكل",
+                origin: "مجموعة تذوق – 4 أنواع",
+                price: 250,
+                category: "gift",
+                emoji: "🎁",
+                isGift: true,
+                seasonal: false,
+                flavor: { sweet: 80, rich: 85, variety: 100 },
+                tasting: "يحتوي على شرائح من كيك الكراميل الكلاسيكي، تشيز كيك الكراميل، براوني الكراميل، وتارت الكراميل. مثالي للهدايا.",
+                ingredients: "متنوعة حسب القطع",
+                allergens: ["جلوتين", "بيض", "ألبان", "مكسرات"],
+                pairings: [{ icon: "☕", name: "قهوة" }],
+                reviews: [{ name: "مها", rating: 5, text: "أجمل هدية! الكل انبسط بالتنوع." }]
+            }
+        ];
 
-<script>
-  // Navbar scroll shadow
-  const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+        const gifts = [
+            { id: "g1", name: "صندوق تذوق الكراميل", desc: "4 قطع مختارة من أشهر كيكاتنا", price: 150, emoji: "🎀" },
+            { id: "g2", name: "صندوق الهدايا الفاخر", desc: "تشكيلة 8 قطع مع تغليف ذهبي", price: 280, emoji: "💝" },
+            { id: "g3", name: "صندوق المناسبات", desc: "12 قطعة مع إمكانية نقش الاسم", price: 450, emoji: "👑" }
+        ];
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.12 });
+        let cart = [];
+        let currentProduct = null;
+        let currentPdpQty = 1;
+        let checkoutStep = 1;
+        let shippingCost = 0;
+        let giftWrapCost = 0;
+        let truffleClicks = 0;
 
-  document.querySelectorAll('.product-card, .occasion-card, .d-badge, .feature-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity .6s ease, transform .6s ease';
-    observer.observe(el);
-  });
-</script>
+        const navbar = document.getElementById('navbar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartSubtotal = document.getElementById('cartSubtotal');
+        const shippingProgress = document.getElementById('shippingProgress');
+        const shippingText = document.getElementById('shippingText');
+        const giftWrapCheckbox = document.getElementById('giftWrap');
+        const giftMessage = document.getElementById('giftMessage');
+        const pdpOverlay = document.getElementById('pdpOverlay');
+        const checkoutOverlay = document.getElementById('checkoutOverlay');
+        const toast = document.getElementById('toast');
+        const secretOverlay = document.getElementById('secretOverlay');
+        const truffleHint = document.getElementById('truffleHint');
+
+        // Canvas particles
+        const canvas = document.getElementById('cocoaCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = Math.random() * 0.3 + 0.2;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.color = Math.random() > 0.5 ? '#E6B87A' : '#D4AF37';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.y > canvas.height) { this.y = -10; this.x = Math.random() * canvas.width; }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+        for (let i=0; i<80; i++) particles.push(new Particle());
+        function animateParticles() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Navbar scroll
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+        // Render functions
+        function renderProducts(filter='all') {
+            const grid = document.getElementById('productsGrid');
+            const filtered = filter==='all' ? products : products.filter(p => p.category===filter);
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card" onclick="openPdp(${p.id})">
+                    ${p.isGift ? '<div class="gift-ribbon">هدية</div>' : ''}
+                    <div class="product-image"><div class="product-emoji">${p.emoji}</div></div>
+                    <div class="product-info">
+                        <h3 class="product-name">${p.name}</h3>
+                        <p class="product-origin">${p.origin}</p>
+                        <div class="product-footer">
+                            <span class="product-price">${p.price} ريال</span>
+                            <button class="quick-add" onclick="event.stopPropagation(); addToCart(${p.id})">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        function renderSeasonal() {
+            const seasonal = products.filter(p => p.seasonal);
+            document.getElementById('seasonalGrid').innerHTML = seasonal.map(p => `
+                <div class="seasonal-card" onclick="openPdp(${p.id})">
+                    <div class="seasonal-card-image"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:0.5;">${p.emoji}</div><div class="seasonal-badge">موسمي</div></div>
+                    <div class="seasonal-card-content">
+                        <h3 class="seasonal-card-title">${p.name}</h3>
+                        <p class="seasonal-card-desc">${p.origin}</p>
+                        <div class="seasonal-card-price"><span>${p.price} ريال</span><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${p.id})">أضف للسلة</button></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        function renderGifts() {
+            document.getElementById('giftGrid').innerHTML = gifts.map(g => `
+                <div class="gift-card">
+                    <div class="gift-icon">${g.emoji}</div>
+                    <h3 class="gift-title">${g.name}</h3>
+                    <p class="gift-desc">${g.desc}</p>
+                    <div class="gift-price">${g.price} ريال</div>
+                    <button class="add-to-cart-btn" onclick="addGiftToCart('${g.id}')">أضف للسلة</button>
+                </div>
+            `).join('');
+        }
+
+        // Cart logic
+        function addToCart(productId, qty=1) {
+            const product = products.find(p => p.id===productId);
+            if(!product) return;
+            const existing = cart.find(item => item.id===productId);
+            if(existing) existing.qty += qty;
+            else cart.push({ id:productId, qty, product });
+            updateCart(); showToast('تمت الإضافة للسلة');
+        }
+        function addGiftToCart(giftId) {
+            const gift = gifts.find(g => g.id===giftId);
+            if(!gift) return;
+            const existing = cart.find(item => item.giftId===giftId);
+            if(existing) existing.qty++;
+            else cart.push({ giftId, qty:1, product: { name: gift.name, price: gift.price, emoji: gift.emoji, origin: "هدية" } });
+            updateCart(); showToast('تمت الإضافة للسلة');
+        }
+        function removeFromCart(index) { cart.splice(index,1); updateCart(); }
+        function updateQty(index, delta) {
+            cart[index].qty += delta;
+            if(cart[index].qty <= 0) removeFromCart(index);
+            else updateCart();
+        }
+        function updateCart() {
+            const totalQty = cart.reduce((sum,item) => sum+item.qty, 0);
+            cartCount.textContent = totalQty;
+            const subtotal = cart.reduce((sum,item) => sum+(item.product.price*item.qty), 0);
+            cartSubtotal.textContent = subtotal + ' ريال';
+            const threshold = 200;
+            const progress = Math.min((subtotal/threshold)*100, 100);
+            shippingProgress.style.width = progress+'%';
+            const remaining = Math.max(threshold-subtotal, 0);
+            shippingText.textContent = remaining>0 ? `أضف ${remaining} ريال للشحن المجاني` : 'أنت تستحق الشحن المجاني!';
+            if(cart.length===0) cartItems.innerHTML = '<div class="empty-cart"><div class="empty-cart-icon">🧁</div><p>سلتك فارغة</p></div>';
+            else cartItems.innerHTML = cart.map((item,i) => `
+                <div class="cart-item">
+                    <div class="cart-item-image">${item.product.emoji || '🎁'}</div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.product.name}</div>
+                        <div class="cart-item-variant">${item.product.origin}</div>
+                        <div class="cart-item-price">${item.product.price} ريال</div>
+                        <div class="cart-item-qty">
+                            <button class="qty-btn" onclick="updateQty(${i}, -1)">−</button><span>${item.qty}</span><button class="qty-btn" onclick="updateQty(${i}, 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        giftWrapCheckbox.addEventListener('change', (e) => {
+            giftWrapCost = e.target.checked ? 15 : 0;
+            giftMessage.classList.toggle('active', e.target.checked);
+        });
+
+        document.getElementById('navCart').addEventListener('click', () => { cartOverlay.classList.add('active'); cartDrawer.classList.add('active'); });
+        function closeCart() { cartOverlay.classList.remove('active'); cartDrawer.classList.remove('active'); }
+        cartOverlay.addEventListener('click', closeCart);
+        document.getElementById('cartClose').addEventListener('click', closeCart);
+
+        // PDP
+        function openPdp(productId) {
+            currentProduct = products.find(p => p.id===productId);
+            if(!currentProduct) return;
+            currentPdpQty = 1;
+            document.getElementById('pdpEmoji').textContent = currentProduct.emoji;
+            document.getElementById('pdpName').textContent = currentProduct.name;
+            document.getElementById('pdpOrigin').textContent = currentProduct.origin;
+            document.getElementById('pdpPrice').textContent = currentProduct.price + ' ريال';
+            document.getElementById('pdpQty').textContent = currentPdpQty;
+
+            const flavorLabels = { sweet:'حلاوة', rich:'غنى', nutty:'مكسرات', creamy:'كريمي', tangy:'حموضة', chocolatey:'شوكولاتة', gooey:'طراوة', fruity:'فواكه', fun:'متعة', variety:'تنوع' };
+            const flavorColors = { sweet:'#C68E4E', rich:'#8B5A2B', nutty:'#A0522D', creamy:'#E6B87A', tangy:'#CD853F', chocolatey:'#3E2723', gooey:'#D2691E', fruity:'#FF8C00', fun:'#FFD700', variety:'#DAA520' };
+            document.getElementById('flavorMap').innerHTML = Object.entries(currentProduct.flavor).map(([k,v]) => `
+                <div><div class="flavor-label"><span>${flavorLabels[k] || k}</span><span>${v}%</span></div><div class="flavor-bar"><div class="flavor-bar-fill" style="width:${v}%; background:${flavorColors[k] || '#ccc'};"></div></div></div>
+            `).join('');
+
+            document.getElementById('tastingNotes').innerHTML = `<div class="tasting-note"><div class="tasting-note-title">ملاحظات التذوق</div><div class="tasting-note-text">${currentProduct.tasting}</div></div>`;
+            document.getElementById('ingredientsContent').innerHTML = `<div class="tasting-note"><div class="tasting-note-title">المكونات</div><div class="tasting-note-text">${currentProduct.ingredients}</div></div><div style="margin-top:20px;">${currentProduct.allergens.map(a => `<span class="allergen-tag">${a}</span>`).join('')}</div>`;
+            document.getElementById('pairingsContent').innerHTML = currentProduct.pairings.map(p => `<div class="pairing-item"><span class="pairing-icon">${p.icon}</span><span>${p.name}</span></div>`).join('');
+            document.getElementById('reviewsContent').innerHTML = currentProduct.reviews.map(r => `
+                <div class="review-card"><div class="review-header"><span class="reviewer-name">${r.name}</span><span class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span></div><p class="review-text">${r.text}</p></div>
+            `).join('');
+
+            document.querySelectorAll('.pdp-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.pdp-tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector('[data-tab="flavor"]').classList.add('active');
+            document.getElementById('tab-flavor').classList.add('active');
+            pdpOverlay.classList.add('active');
+        }
+        document.getElementById('pdpClose').addEventListener('click', () => pdpOverlay.classList.remove('active'));
+        pdpOverlay.addEventListener('click', (e) => { if(e.target===pdpOverlay) pdpOverlay.classList.remove('active'); });
+        document.querySelectorAll('.pdp-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.pdp-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.pdp-tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
+            });
+        });
+        document.getElementById('pdpQtyMinus').addEventListener('click', () => { if(currentPdpQty>1) { currentPdpQty--; document.getElementById('pdpQty').textContent = currentPdpQty; } });
+        document.getElementById('pdpQtyPlus').addEventListener('click', () => { currentPdpQty++; document.getElementById('pdpQty').textContent = currentPdpQty; });
+        document.getElementById('pdpAddBtn').addEventListener('click', () => { if(currentProduct) { addToCart(currentProduct.id, currentPdpQty); pdpOverlay.classList.remove('active'); } });
+
+        // Checkout
+        document.getElementById('checkoutBtn').addEventListener('click', () => { closeCart(); checkoutOverlay.classList.add('active'); updateSummary(); });
+        function nextStep(step) {
+            document.querySelectorAll('.checkout-step-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`checkout-step-${step}`).classList.add('active');
+            document.querySelectorAll('.step').forEach(s => {
+                const n = parseInt(s.dataset.step);
+                s.classList.remove('active','completed');
+                if(n===step) s.classList.add('active');
+                else if(n<step) s.classList.add('completed');
+            });
+            checkoutStep = step;
+            if(step===4) { document.getElementById('orderNumber').textContent = '#KR-2026-'+Math.floor(1000+Math.random()*9000); cart=[]; updateCart(); }
+        }
+        function prevStep(step) { nextStep(step); }
+        function selectShipping(el, cost) { document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected')); el.classList.add('selected'); el.querySelector('input').checked=true; shippingCost=cost; updateSummary(); }
+        function selectPayment(el) { document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected')); el.classList.add('selected'); }
+        function updateSummary() {
+            const subtotal = cart.reduce((sum,item)=>sum+(item.product.price*item.qty),0);
+            document.getElementById('summarySubtotal').textContent = subtotal+' ريال';
+            document.getElementById('summaryShipping').textContent = shippingCost===0 ? 'مجاني' : shippingCost+' ريال';
+            document.getElementById('summaryGift').textContent = giftWrapCost===0 ? '0 ريال' : giftWrapCost+' ريال';
+            document.getElementById('summaryTotal').textContent = (subtotal+shippingCost+giftWrapCost)+' ريال';
+        }
+        function closeCheckout() { checkoutOverlay.classList.remove('active'); nextStep(1); }
+        checkoutOverlay.addEventListener('click', (e) => { if(e.target===checkoutOverlay) closeCheckout(); });
+
+        // Easter Egg
+        truffleHint.addEventListener('click', () => {
+            truffleClicks++; truffleHint.classList.add('shake'); setTimeout(()=>truffleHint.classList.remove('shake'),500);
+            if(truffleClicks>=3){ truffleClicks=0; secretOverlay.classList.add('active'); }
+        });
+        function closeSecret() { secretOverlay.classList.remove('active'); }
+        secretOverlay.addEventListener('click', (e) => { if(e.target===secretOverlay) closeSecret(); });
+
+        // Toast
+        function showToast(msg) { document.getElementById('toastMessage').textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2500); }
+
+        // Filters
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderProducts(tab.dataset.filter);
+            });
+        });
+
+        // Reveal
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold:0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Init
+        renderProducts(); renderSeasonal(); renderGifts(); updateCart();
+    </script>
 </body>
 </html>
