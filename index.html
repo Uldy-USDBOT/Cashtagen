@@ -1027,7 +1027,97 @@
             background: #ccc;
             border-radius: 4px;
         }
+
+        /* ========== منتجات جديدة ========== */
+        .new-arrivals {
+            background: linear-gradient(180deg, #fff8f0 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .new-arrivals::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .new-badge-header {
+            text-align: center;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 2;
+        }
+        .new-flash {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            animation: pulse-badge 2s infinite;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4); }
+        }
+        .new-products-grid .product-card {
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .new-products-grid .product-card:active {
+            border-color: var(--gold);
+        }
+        .new-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            z-index: 5;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+        }
+        .new-products-grid .product-img {
+            background: linear-gradient(145deg, #fff5e6, #ffe4c4);
+        }
+        .new-products-grid .product-price {
+            color: #c0392b;
+        }
+        .btn-new-quick {
+            width: 36px; height: 36px;
+            min-width: 36px; min-height: 36px;
+            border-radius: 50%;
+            border: 2px solid #c0392b;
+            background: #fff;
+            color: #c0392b;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            touch-action: manipulation;
+            padding: 0;
+        }
+        .btn-new-quick:active {
+            background: #c0392b;
+            color: #fff;
+            transform: scale(0.9);
+        }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -1050,6 +1140,7 @@
     <!-- القائمة المنبثقة -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <ul class="nav-menu" id="navMenu">
+        <li><a href="#new-arrivals">✨ وصل حديثاً</a></li>
         <li><a href="#products">📋 جميع المنتجات</a></li>
         <li><a href="#gifts">🎁 صناديق الهدايا</a></li>
         <li><a href="#timeline">📖 قصتنا</a></li>
@@ -1068,6 +1159,7 @@
         <div class="scroll-hint">↓ اسحب للأسفل</div>
     </section>
 
+
     <!-- ========== قسم المنتجات ========== -->
     <section class="section" id="products">
         <h2 class="section-title">جميع المنتجات</h2>
@@ -1082,7 +1174,18 @@
         <div class="products-grid" id="productsGrid"></div>
     </section>
 
+    <!-- ========== قسم المنتجات الجديدة ========== -->
+    <section class="section new-arrivals" id="new-arrivals">
+        <div class="new-badge-header">
+            <span class="new-flash">✨ جديد</span>
+            <h2 class="section-title">وصل حديثاً</h2>
+            <p class="section-subtitle">تشكيلة جديدة من كيك الكراميل</p>
+        </div>
+        <div class="products-grid new-products-grid" id="newProductsGrid"></div>
+    </section>
+
     <!-- ========== قسم الخط الزمني ========== -->
+
     <section class="timeline-section" id="timeline">
         <div class="section">
             <h2 class="section-title">قصتنا</h2>
@@ -1576,8 +1679,81 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
         $$('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
+
+        // ============ منتجات جديدة ============
+        const newProducts = [
+            { id:101, name:"كيك كراميل بالفستق", origin:"فستق حلبي مُحمص مع كراميل ذهبي", price:110, category:"cake", emoji:"🥜", desc:"طبقات إسفنجية فانيلا مع كريمة كراميل غنية ومكسرات فستق حلبي محمصة يدوياً.", isNew:true },
+            { id:102, name:"تشيز كيك التوت البري", origin:"توت بري طازج مع صوص الكراميل", price:105, category:"cheesecake", emoji:"🫐", desc:"تشيز كيك كريمي مع طبقة توت بري طازج وصوص كراميل مملح، مزيج مثالي من الحموضة والحلاوة.", isNew:true },
+            { id:103, name:"كيك التمر باللوز", origin:"تمر مجهول + لوز محمص", price:95, category:"cake", emoji:"🌴", desc:"كيك غني بالتمر المجهول الطرابلسي مع قطع اللوز المحمص وصوص الكراميل.", isNew:true },
+            { id:104, name:"سوفتي كراميل", origin:"كيك اسفنجي طري بالكراميل", price:80, category:"cake", emoji:"🍮", desc:"كيك اسفنجي فائق الطراوة مغموس بصوص الكراميل الدافئ، يذوب في الفم.", isNew:true }
+        ];
+
+        function renderNewProducts() {
+            const grid = $('#newProductsGrid');
+            if (!grid) return;
+            grid.innerHTML = newProducts.map(function(p) {
+                return '<div class="product-card" data-new-pid="' + p.id + '">' +
+                    '<div class="new-tag">جديد</div>' +
+                    '<div class="product-img">' +
+                        '<span class="product-emoji">' + p.emoji + '</span>' +
+                    '</div>' +
+                    '<div class="product-info">' +
+                        '<div class="product-name">' + p.name + '</div>' +
+                        '<div class="product-origin">' + p.origin + '</div>' +
+                        '<div class="product-footer">' +
+                            '<span class="product-price">' + p.price + ' د.ل</span>' +
+                            '<button class="btn-new-quick" data-new-quick="' + p.id + '">+</button>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+
+            $$('#newProductsGrid .product-card').forEach(function(card) {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.btn-new-quick')) return;
+                    var pid = parseInt(card.dataset.newPid);
+                    openNewPdp(pid);
+                });
+            });
+            $$('.btn-new-quick').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var pid = parseInt(btn.dataset.newQuick);
+                    addNewToCart(pid);
+                });
+            });
+        }
+
+        function addNewToCart(productId, qty) {
+            qty = qty || 1;
+            var product = newProducts.find(function(p) { return p.id === productId; });
+            if (!product) return;
+            var existing = cart.find(function(item) { return item.id === productId; });
+            if (existing) existing.qty += qty;
+            else cart.push({ id: productId, qty: qty, product: product });
+            updateCart();
+            showToast('✓ تمت إضافة المنتج الجديد');
+        }
+
+        function openNewPdp(productId) {
+            var product = newProducts.find(function(p) { return p.id === productId; });
+            if (!product) return;
+            currentProduct = product;
+            currentQty = 1;
+
+            pdpImage.innerHTML = '<span class="product-emoji" style="font-size:6rem;">' + product.emoji + '</span>';
+            pdpName.textContent = product.name;
+            pdpOrigin.textContent = product.origin;
+            pdpPrice.textContent = product.price + ' د.ل';
+            pdpDesc.textContent = product.desc || '';
+            pdpQty.textContent = '1';
+            pdpOverlay.classList.add('active');
+            lockScroll();
+        }
+
         // ============ تشغيل ============
         renderProducts();
+        renderNewProducts();
         renderGifts();
         updateCart();
 
