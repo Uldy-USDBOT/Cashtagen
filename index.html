@@ -2,10 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كراميسك - كيك الكراميل الفاخر</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>كراميسك - كيك الكراميل الفاخر | طرابلس</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --caramel-dark: #2C1810;
@@ -15,8 +15,10 @@
             --cream-dark: #E8E0D0;
             --gold: #D4AF37;
             --gold-light: #F4D03F;
-            --gold-dark: #B8941F;
             --toffee: #A0522D;
+            --whatsapp: #25D366;
+            --text-dark: #1a1a1a;
+            --text-muted: #666;
         }
 
         * {
@@ -27,18 +29,19 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Cairo', 'Noto Naskh Arabic', serif;
+            font-family: 'Cairo', sans-serif;
             background-color: var(--cream);
-            color: var(--caramel-dark);
+            color: var(--text-dark);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 4px;
         }
         ::-webkit-scrollbar-track {
             background: var(--cream);
@@ -55,7 +58,7 @@
             left: 0;
             right: 0;
             z-index: 999;
-            padding: 20px 40px;
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -63,42 +66,43 @@
             background: transparent;
         }
         .navbar.scrolled {
-            background: rgba(44, 24, 16, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 14px 40px;
-            box-shadow: 0 2px 30px rgba(0,0,0,0.2);
+            background: rgba(44, 24, 16, 0.97);
+            backdrop-filter: blur(15px);
+            padding: 10px 20px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.3);
         }
         .nav-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--cream);
             text-decoration: none;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
         .nav-logo span.ar {
             font-family: 'Cairo', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
         }
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 16px;
             list-style: none;
-            flex-direction: row-reverse; /* for RTL */
         }
         .nav-links a {
             color: var(--cream);
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
             font-weight: 500;
             position: relative;
             padding-bottom: 4px;
             transition: color 0.3s;
+            white-space: nowrap;
         }
         .nav-links a::after {
             content: '';
@@ -120,30 +124,31 @@
             position: relative;
             cursor: pointer;
             color: var(--cream);
-            font-size: 20px;
             transition: transform 0.3s;
+            display: flex;
+            align-items: center;
         }
         .nav-cart:hover {
-            transform: scale(1.1);
             color: var(--gold);
+            transform: scale(1.1);
         }
         .cart-count {
             position: absolute;
             top: -8px;
             left: -8px;
-            background: var(--caramel-light);
+            background: var(--whatsapp);
             color: white;
-            font-size: 10px;
+            font-size: 0.65rem;
             width: 18px;
             height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             position: relative;
             height: 100vh;
@@ -154,34 +159,20 @@
             justify-content: center;
             background: var(--caramel-dark);
         }
-        .hero-video-container {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-        .hero-video-container::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(44, 24, 16, 0.3) 0%, rgba(44, 24, 16, 0.1) 40%, rgba(44, 24, 16, 0.6) 100%);
-            z-index: 2;
-        }
         .caramel-glow {
             position: absolute;
             width: 200%;
             height: 200%;
             top: -50%;
             left: -50%;
-            background: 
-                radial-gradient(ellipse at 30% 20%, rgba(198, 142, 78, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 60%, rgba(230, 184, 122, 0.4) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 80%, rgba(160, 82, 45, 0.2) 0%, transparent 50%);
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(198, 142, 78, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(230, 184, 122, 0.35) 0%, transparent 40%);
             animation: glowMove 20s ease-in-out infinite;
         }
         @keyframes glowMove {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(-2%, 2%) rotate(1deg); }
-            66% { transform: translate(2%, -1%) rotate(-1deg); }
+            50% { transform: translate(-2%, 2%) rotate(2deg); }
         }
         #cocoaCanvas {
             position: absolute;
@@ -195,403 +186,279 @@
             text-align: center;
             color: var(--cream);
             padding: 0 20px;
+            width: 100%;
         }
         .hero-brand {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 10vw, 96px);
+            font-size: clamp(2.5rem, 12vw, 6rem);
             font-weight: 400;
-            letter-spacing: 8px;
+            letter-spacing: 4px;
             margin-bottom: 8px;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+            line-height: 1.1;
         }
         .hero-brand .ar-brand {
             font-family: 'Cairo', sans-serif;
-            font-size: 0.6em;
+            font-size: 0.55em;
             display: block;
-            letter-spacing: 8px;
-            margin-top: 8px;
-            font-weight: 600;
+            letter-spacing: 4px;
+            margin-top: 6px;
+            font-weight: 700;
+            color: var(--gold);
         }
         .hero-tagline {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: clamp(18px, 3vw, 28px);
-            letter-spacing: 4px;
-            color: var(--gold);
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease-out 0.3s both;
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            letter-spacing: 2px;
+            color: var(--caramel-light);
+            margin-bottom: 35px;
+            font-weight: 300;
         }
         .hero-cta {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px 40px;
+            gap: 10px;
+            padding: 14px 35px;
             background: transparent;
             border: 1px solid var(--gold);
             color: var(--gold);
-            font-size: 14px;
-            letter-spacing: 2px;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.4s ease;
             text-decoration: none;
-            animation: fadeInUp 1s ease-out 0.6s both;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gold);
-            transform: translateX(101%);
-            transition: transform 0.4s ease;
-            z-index: -1;
-        }
-        .hero-cta:hover::before {
-            transform: translateX(0);
+            border-radius: 30px;
+            font-weight: 600;
         }
         .hero-cta:hover {
+            background: var(--gold);
             color: var(--caramel-dark);
-            border-color: var(--gold);
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
+            color: var(--cream);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.6;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            color: var(--cream);
-            font-size: 11px;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
+            gap: 5px;
         }
 
-        /* Section Styling */
+        /* Sections */
         .section {
-            padding: 100px 40px;
-            max-width: 1400px;
+            padding: 60px 16px;
+            max-width: 1300px;
             margin: 0 auto;
+            width: 100%;
         }
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             color: var(--caramel-dark);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: var(--gold);
-            margin: 16px auto 0;
+            font-weight: 600;
         }
         .section-subtitle {
             text-align: center;
             color: var(--caramel);
-            font-size: 14px;
-            letter-spacing: 4px;
-            margin-bottom: 60px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-weight: 400;
         }
 
-        /* Seasonal Section */
-        .seasonal-section {
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .seasonal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .seasonal-card {
-            background: white;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(44, 24, 16, 0.08);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-        .seasonal-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(44, 24, 16, 0.15);
-        }
-        .seasonal-card-image {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, var(--caramel-light) 0%, var(--toffee) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .seasonal-card-image::after {
-            content: '🍰';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 80px;
-            opacity: 0.3;
-        }
-        .seasonal-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: var(--caramel);
-            color: white;
-            padding: 6px 14px;
-            font-size: 11px;
-            letter-spacing: 1px;
-            font-weight: 600;
-            border-radius: 2px;
-        }
-        .seasonal-card-content {
-            padding: 28px;
-        }
-        .seasonal-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            margin-bottom: 8px;
-            color: var(--caramel-dark);
-        }
-        .seasonal-card-desc {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .seasonal-card-price {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--caramel-dark);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .add-to-cart-btn {
-            padding: 10px 24px;
-            background: var(--caramel-dark);
-            color: var(--cream);
-            border: none;
-            font-size: 12px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 2px;
-        }
-        .add-to-cart-btn:hover {
-            background: var(--gold);
-            color: var(--caramel-dark);
-        }
-
-        /* Product Grid */
-        .products-section {
-            background: var(--cream);
-        }
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-        .filter-tab {
-            padding: 10px 24px;
-            background: transparent;
-            border: 1px solid var(--cream-dark);
-            color: var(--caramel-dark);
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 2px;
-            font-family: 'Cairo', sans-serif;
-        }
-        .filter-tab:hover, .filter-tab.active {
-            background: var(--caramel-dark);
-            color: var(--cream);
-            border-color: var(--caramel-dark);
-        }
+        /* Products Grid Mobile First */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
+        @media (min-width: 480px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+        }
+
         .product-card {
             background: white;
-            border-radius: 4px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(44, 24, 16, 0.06);
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 50px rgba(44, 24, 16, 0.12);
+        .product-card:active {
+            transform: scale(0.98);
+        }
+        @media (hover: hover) {
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            }
         }
         .product-image {
             width: 100%;
-            height: 260px;
-            background: linear-gradient(135deg, #8B5A2B 0%, var(--toffee) 100%);
-            position: relative;
-            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, #f5e6d3, #e8cfa0);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .product-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+            position: relative;
+            overflow: hidden;
         }
         .product-emoji {
-            font-size: 100px;
-            opacity: 0.9;
-            transition: transform 0.4s;
-            z-index: 2;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-        }
-        .product-card:hover .product-emoji {
-            transform: scale(1.1) rotate(-5deg);
+            font-size: clamp(3rem, 15vw, 5rem);
+            transition: transform 0.3s;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
         }
         .product-info {
-            padding: 24px;
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .product-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            margin-bottom: 6px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
             color: var(--caramel-dark);
+            line-height: 1.4;
         }
         .product-origin {
-            font-size: 12px;
-            color: var(--caramel);
-            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
             margin-bottom: 12px;
         }
         .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--cream-dark);
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid #f0e8d8;
         }
         .product-price {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--caramel-dark);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--toffee);
         }
         .quick-add {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            border: 1px solid var(--caramel-dark);
+            border: 2px solid var(--caramel);
             background: transparent;
-            color: var(--caramel-dark);
+            color: var(--caramel);
             cursor: pointer;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
-            font-size: 18px;
+            transition: all 0.2s;
+            font-weight: bold;
         }
-        .quick-add:hover {
-            background: var(--caramel-dark);
-            color: var(--cream);
+        .quick-add:active {
+            background: var(--caramel);
+            color: white;
         }
+
         .gift-ribbon {
             position: absolute;
             top: 12px;
-            left: -30px;
+            left: -28px;
             background: var(--gold);
             color: var(--caramel-dark);
-            padding: 4px 40px;
-            font-size: 10px;
-            letter-spacing: 2px;
+            padding: 4px 35px;
+            font-size: 0.7rem;
             font-weight: 700;
             transform: rotate(-45deg);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 10;
+            z-index: 5;
+            letter-spacing: 1px;
         }
 
-        /* Timeline Section */
+        /* Filter tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+        .filter-tab {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #ddd;
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.2s;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .filter-tab.active {
+            background: var(--caramel-dark);
+            color: white;
+            border-color: var(--caramel-dark);
+        }
+
+        /* Timeline */
         .timeline-section {
             background: var(--caramel-dark);
             color: var(--cream);
-            position: relative;
-            overflow: hidden;
         }
-        .timeline-section .section-title {
-            color: var(--cream);
-        }
-        .timeline-section .section-subtitle {
-            color: var(--caramel);
-        }
+        .timeline-section .section-title { color: var(--cream); }
         .timeline {
             position: relative;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 0;
+            padding: 20px 0;
         }
         .timeline-line {
             position: absolute;
-            right: 50%;
+            right: 20px;
             top: 0;
             bottom: 0;
-            width: 1px;
-            background: linear-gradient(180deg, transparent 0%, var(--gold) 20%, var(--gold) 80%, transparent 100%);
-            transform: translateX(50%);
+            width: 2px;
+            background: rgba(212,175,55,0.4);
         }
         .timeline-item {
-            display: flex;
-            justify-content: flex-start;
-            padding-left: 50%;
             position: relative;
-            margin-bottom: 60px;
-        }
-        .timeline-item:nth-child(even) {
-            justify-content: flex-end;
-            padding-left: 0;
-            padding-right: 50%;
-        }
-        .timeline-content {
-            max-width: 400px;
-            padding: 0 40px;
-            text-align: right;
-        }
-        .timeline-item:nth-child(even) .timeline-content {
-            text-align: left;
+            padding-right: 50px;
+            margin-bottom: 40px;
         }
         .timeline-dot {
             position: absolute;
-            right: 50%;
-            top: 0;
-            transform: translateX(50%);
-            width: 20px;
-            height: 20px;
+            right: 12px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
             background: var(--caramel-dark);
             border: 3px solid var(--gold);
             border-radius: 50%;
@@ -599,141 +466,111 @@
         }
         .timeline-number {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: 2rem;
             color: var(--gold);
-            opacity: 0.3;
+            opacity: 0.5;
             line-height: 1;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         .timeline-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: var(--cream);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: white;
         }
         .timeline-desc {
-            font-size: 14px;
-            line-height: 1.8;
-            color: rgba(245, 240, 232, 0.8);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
         }
 
-        /* Gift Guide */
-        .gift-section {
-            background: linear-gradient(180deg, var(--cream) 0%, #EDE8E0 100%);
-        }
+        /* Gift Grid */
         .gift-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 600px) {
+            .gift-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         .gift-card {
             background: white;
-            border-radius: 4px;
-            padding: 40px;
+            border-radius: 12px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 8px 30px rgba(44, 24, 16, 0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border: 1px solid transparent;
+            transition: all 0.3s;
         }
-        .gift-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-4px);
-        }
-        .gift-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .gift-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: var(--caramel-dark);
-        }
-        .gift-desc {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-        .gift-price {
-            font-size: 20px;
+        .gift-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .gift-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; }
+        .gift-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; }
+        .gift-price { font-size: 1.3rem; font-weight: 700; color: var(--toffee); margin-bottom: 16px; }
+
+        .add-to-cart-btn {
+            padding: 10px 20px;
+            background: var(--caramel-dark);
+            color: white;
+            border: none;
+            font-size: 0.8rem;
             font-weight: 600;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+        .add-to-cart-btn:active {
+            background: var(--gold);
             color: var(--caramel-dark);
-            margin-bottom: 20px;
         }
 
         /* Footer */
         .footer {
-            background: var(--caramel-dark);
-            color: var(--cream);
-            padding: 80px 40px 40px;
-        }
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
+            background: #1a0f0a;
+            color: #ccc;
+            padding: 50px 20px 30px;
+            text-align: center;
         }
         .footer-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--gold);
+            margin-bottom: 10px;
         }
         .footer-desc {
-            font-size: 14px;
-            line-height: 1.8;
-            color: rgba(245, 240, 232, 0.6);
-            max-width: 300px;
+            font-size: 0.85rem;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
         }
-        .footer-title {
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-            color: var(--gold);
-            font-weight: 600;
-        }
-        .footer-links {
-            list-style: none;
-        }
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        .footer-links a {
-            color: rgba(245, 240, 232, 0.6);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        .footer-links a:hover {
-            color: var(--gold);
+        .footer-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--caramel-light);
         }
         .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 40px;
-            border-top: 1px solid rgba(245, 240, 232, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: rgba(245, 240, 232, 0.4);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.75rem;
+            color: #888;
         }
 
         /* Cart Drawer */
         .cart-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             z-index: 2000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.3s;
         }
         .cart-overlay.active {
             opacity: 1;
@@ -743,1262 +580,380 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 480px;
-            max-width: 100%;
+            width: 100%;
+            max-width: 420px;
             height: 100vh;
+            height: 100dvh;
             background: var(--cream);
             z-index: 2001;
             transform: translateX(-100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
-            box-shadow: 10px 0 40px rgba(0,0,0,0.2);
         }
         .cart-drawer.active {
             transform: translateX(0);
         }
         .cart-header {
-            padding: 30px;
-            border-bottom: 1px solid var(--cream-dark);
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-direction: row-reverse;
-        }
-        .cart-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--caramel-dark);
+            background: white;
         }
         .cart-close {
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: var(--caramel-dark);
-            transition: transform 0.3s;
-        }
-        .cart-close:hover {
-            transform: rotate(90deg);
+            padding: 5px;
         }
         .cart-items {
             flex: 1;
             overflow-y: auto;
-            padding: 20px 30px;
+            padding: 15px;
         }
         .cart-item {
             display: flex;
-            gap: 16px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--cream-dark);
-            flex-direction: row-reverse;
+            gap: 12px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
         }
         .cart-item-image {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--caramel-light), var(--toffee));
-            border-radius: 4px;
+            width: 60px;
+            height: 60px;
+            background: #f5e6d3;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
-            flex-shrink: 0;
+            font-size: 2rem;
         }
-        .cart-item-details {
-            flex: 1;
-            text-align: right;
-        }
-        .cart-item-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            margin-bottom: 4px;
-            color: var(--caramel-dark);
-        }
-        .cart-item-variant {
-            font-size: 12px;
-            color: var(--caramel);
-            margin-bottom: 8px;
-        }
-        .cart-item-price {
-            font-weight: 600;
-            color: var(--caramel-dark);
-        }
-        .cart-item-qty {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 8px;
-            justify-content: flex-end;
-        }
-        .qty-btn {
-            width: 28px;
-            height: 28px;
-            border: 1px solid var(--cream-dark);
-            background: white;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: all 0.2s;
-        }
-        .qty-btn:hover {
-            background: var(--caramel-dark);
-            color: var(--cream);
-            border-color: var(--caramel-dark);
-        }
+        .cart-item-details { flex: 1; }
+        .cart-item-name { font-weight: 700; font-size: 0.9rem; }
+        .cart-item-price { font-weight: 600; color: var(--toffee); }
         .cart-footer {
-            padding: 30px;
-            border-top: 1px solid var(--cream-dark);
+            padding: 20px;
             background: white;
-        }
-        .gift-wrap-option {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding: 16px;
-            background: var(--cream);
-            border-radius: 4px;
-            border: 1px solid var(--cream-dark);
-        }
-        .gift-message {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--cream-dark);
-            border-radius: 4px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 13px;
-            resize: none;
-            margin-bottom: 16px;
-            display: none;
-        }
-        .gift-message.active {
-            display: block;
-        }
-        .free-shipping-bar {
-            height: 4px;
-            background: var(--cream-dark);
-            border-radius: 2px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-        .free-shipping-progress {
-            height: 100%;
-            background: var(--gold);
-            border-radius: 2px;
-            transition: width 0.4s ease;
-        }
-        .free-shipping-text {
-            font-size: 12px;
-            color: var(--caramel);
-            margin-bottom: 20px;
-            text-align: center;
+            border-top: 1px solid #ddd;
         }
         .cart-subtotal {
             display: flex;
             justify-content: space-between;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--caramel-dark);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
-        .checkout-btn {
+        .whatsapp-btn {
             width: 100%;
-            padding: 18px;
-            background: var(--caramel-dark);
-            color: var(--cream);
+            padding: 15px;
+            background: #25D366;
+            color: white;
             border: none;
-            font-size: 14px;
-            letter-spacing: 2px;
+            font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             transition: all 0.3s;
-            border-radius: 2px;
-            font-weight: 600;
         }
-        .checkout-btn:hover {
-            background: var(--gold);
-            color: var(--caramel-dark);
+        .whatsapp-btn:active {
+            background: #1da851;
         }
         .empty-cart {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px;
             color: #999;
         }
-        .empty-cart-icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-            opacity: 0.3;
-        }
 
-        /* Product Detail Modal */
+        /* PDP Modal */
         .pdp-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.7);
             z-index: 3000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.3s;
             overflow-y: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
         }
         .pdp-overlay.active {
             opacity: 1;
             visibility: visible;
         }
         .pdp-container {
-            background: var(--cream);
-            max-width: 1100px;
-            margin: 60px auto;
-            border-radius: 4px;
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 16px;
             overflow: hidden;
+            margin: 20px 0;
             position: relative;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-            transform: translateY(40px);
-            transition: transform 0.4s ease;
-        }
-        .pdp-overlay.active .pdp-container {
-            transform: translateY(0);
         }
         .pdp-close {
             position: absolute;
-            top: 24px;
-            left: 24px;
-            width: 44px;
-            height: 44px;
+            top: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
             background: white;
-            border: none;
             border-radius: 50%;
+            border: none;
+            font-size: 1.4rem;
             cursor: pointer;
-            font-size: 20px;
             z-index: 10;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .pdp-close:hover {
-            background: var(--caramel-dark);
-            color: var(--cream);
-            transform: rotate(90deg);
-        }
-        .pdp-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            direction: rtl;
-        }
-        .pdp-image-section {
-            background: linear-gradient(135deg, var(--caramel-light), var(--toffee));
-            min-height: 600px;
+        .pdp-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: linear-gradient(135deg, #f5e6d3, #e8cfa0);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .pdp-emoji {
-            font-size: 200px;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            font-size: 8rem;
         }
         .pdp-info {
-            padding: 50px;
-            overflow-y: auto;
-            max-height: 80vh;
-            text-align: right;
+            padding: 20px;
         }
         .pdp-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            margin-bottom: 8px;
-            color: var(--caramel-dark);
-        }
-        .pdp-origin {
-            font-size: 14px;
-            color: var(--caramel);
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
         .pdp-price {
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--caramel-dark);
-            margin-bottom: 30px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--toffee);
+            margin: 15px 0;
         }
-        .pdp-tabs {
+        .pdp-qty-row {
             display: flex;
-            gap: 0;
-            border-bottom: 1px solid var(--cream-dark);
-            margin-bottom: 24px;
-        }
-        .pdp-tab {
-            padding: 12px 20px;
-            background: none;
-            border: none;
-            border-bottom: 2px solid transparent;
-            cursor: pointer;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            color: #999;
-            transition: all 0.3s;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 500;
-        }
-        .pdp-tab.active {
-            color: var(--caramel-dark);
-            border-bottom-color: var(--gold);
-        }
-        .pdp-tab-content {
-            display: none;
-            animation: fadeIn 0.3s;
-        }
-        .pdp-tab-content.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .flavor-map-visual {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .flavor-bar {
-            background: var(--cream-dark);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 6px;
-        }
-        .flavor-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 1s ease;
-        }
-        .flavor-label {
-            font-size: 12px;
-            color: #666;
-            display: flex;
-            justify-content: space-between;
-        }
-        .tasting-note {
-            background: white;
-            padding: 20px;
-            border-radius: 4px;
-            border-right: 3px solid var(--gold);
-            margin-bottom: 16px;
-            text-align: right;
-        }
-        .tasting-note-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: var(--caramel-dark);
-        }
-        .tasting-note-text {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #555;
-        }
-        .allergen-tag {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(198, 142, 78, 0.2);
-            color: var(--caramel-dark);
-            font-size: 12px;
-            border-radius: 2px;
-            margin: 4px 0 4px 4px;
-            font-weight: 500;
-        }
-        .pairing-item {
-            display: flex;
+            gap: 10px;
             align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--cream-dark);
-        }
-        .pairing-icon {
-            font-size: 24px;
-        }
-        .review-card {
-            background: white;
-            padding: 20px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            text-align: right;
-        }
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .reviewer-name {
-            font-weight: 600;
-            color: var(--caramel-dark);
-        }
-        .review-stars {
-            color: var(--gold);
-        }
-        .review-text {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-        }
-        .pdp-add-cart {
-            margin-top: 30px;
-            display: flex;
-            gap: 16px;
+            margin-top: 20px;
         }
         .pdp-qty {
             display: flex;
             align-items: center;
-            border: 1px solid var(--cream-dark);
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            overflow: hidden;
         }
         .pdp-qty button {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border: none;
-            background: white;
+            background: #f5f5f5;
+            font-size: 1.2rem;
             cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s;
-        }
-        .pdp-qty button:hover {
-            background: var(--caramel-dark);
-            color: var(--cream);
         }
         .pdp-qty span {
-            width: 44px;
+            width: 40px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
         }
         .pdp-add-btn {
             flex: 1;
-            padding: 14px 32px;
+            padding: 12px;
             background: var(--caramel-dark);
-            color: var(--cream);
+            color: white;
             border: none;
-            font-size: 14px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .pdp-add-btn:hover {
-            background: var(--gold);
-            color: var(--caramel-dark);
-        }
-
-        /* Checkout Modal */
-        .checkout-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 4000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-            overflow-y: auto;
-        }
-        .checkout-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .checkout-container {
-            background: var(--cream);
-            max-width: 800px;
-            margin: 40px auto;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-            direction: rtl;
-        }
-        .checkout-header {
-            background: var(--caramel-dark);
-            color: var(--cream);
-            padding: 30px;
-            text-align: center;
-        }
-        .checkout-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-        .checkout-steps {
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            margin-top: 20px;
-        }
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0 20px;
-            opacity: 0.4;
-            transition: opacity 0.3s;
-        }
-        .step.active {
-            opacity: 1;
-        }
-        .step.completed {
-            opacity: 0.7;
-        }
-        .step-number {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        .step.completed .step-number {
-            background: var(--gold);
-            color: var(--caramel-dark);
-        }
-        .step-label {
-            font-size: 12px;
-        }
-        .step-line {
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
-            opacity: 0.3;
-        }
-        .checkout-body {
-            padding: 40px;
-            text-align: right;
-        }
-        .checkout-step-content {
-            display: none;
-        }
-        .checkout-step-content.active {
-            display: block;
-            animation: fadeIn 0.4s;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--caramel-dark);
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--cream-dark);
-            border-radius: 4px;
-            font-family: 'Cairo', sans-serif;
-            font-size: 14px;
-            transition: border-color 0.3s;
-            background: white;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .cold-chain-notice {
-            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-            border: 1px solid #90CAF9;
-            border-radius: 4px;
-            padding: 20px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-        .shipping-option {
-            border: 1px solid var(--cream-dark);
-            border-radius: 4px;
-            padding: 20px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .shipping-option:hover,
-        .shipping-option.selected {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-        }
-        .shipping-option input {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--caramel-dark);
-        }
-        .shipping-option-details h4 {
-            font-size: 14px;
-            margin-bottom: 4px;
-            color: var(--caramel-dark);
-        }
-        .shipping-option-details p {
-            font-size: 12px;
-            color: #888;
-        }
-        .shipping-price {
-            margin-right: auto;
-            font-weight: 600;
-            color: var(--caramel-dark);
-        }
-        .checkout-summary {
-            background: white;
-            border-radius: 4px;
-            padding: 24px;
-            margin-top: 30px;
-        }
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            font-size: 14px;
-        }
-        .summary-row.total {
-            border-top: 2px solid var(--caramel-dark);
-            margin-top: 12px;
-            padding-top: 16px;
-            font-size: 18px;
+            font-size: 0.9rem;
             font-weight: 700;
-            color: var(--caramel-dark);
-        }
-        .checkout-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            gap: 16px;
-        }
-        .btn-secondary {
-            padding: 14px 32px;
-            background: transparent;
-            border: 1px solid var(--caramel-dark);
-            color: var(--caramel-dark);
-            font-size: 13px;
-            letter-spacing: 1px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .btn-primary {
-            padding: 14px 40px;
-            background: var(--caramel-dark);
-            color: var(--cream);
-            border: none;
-            font-size: 13px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .payment-method {
-            border: 1px solid var(--cream-dark);
-            border-radius: 4px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .payment-method:hover,
-        .payment-method.selected {
-            border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.05);
-        }
-        .payment-method-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-        .order-success {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .success-icon {
-            font-size: 80px;
-            margin-bottom: 24px;
-        }
-        .order-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--gold);
-            margin: 20px 0;
-            padding: 16px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 4px;
-            display: inline-block;
         }
 
-        /* Easter Egg */
-        .secret-recipe-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(44, 24, 16, 0.95);
-            z-index: 5000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s ease;
-        }
-        .secret-recipe-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .secret-recipe-content {
-            background: var(--cream);
-            max-width: 600px;
-            width: 90%;
-            padding: 50px;
-            border-radius: 4px;
-            text-align: center;
-            position: relative;
-            border: 2px solid var(--gold);
-            transform: scale(0.9);
-            transition: transform 0.5s ease;
-        }
-        .secret-recipe-overlay.active .secret-recipe-content {
-            transform: scale(1);
-        }
-        .truffle-hint {
-            position: fixed;
-            bottom: 100px;
-            left: 30px;
-            font-size: 40px;
-            cursor: pointer;
-            opacity: 0.2;
-            transition: opacity 0.3s;
-            z-index: 100;
-            user-select: none;
-        }
-        .truffle-hint:hover { opacity: 0.5; }
-        .truffle-hint.shake {
-            animation: shake 0.5s ease;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px) rotate(-5deg); }
-            75% { transform: translateX(5px) rotate(5deg); }
-        }
-
+        /* Toast */
         .toast {
             position: fixed;
-            bottom: 40px;
-            right: 50%;
-            transform: translateX(50%) translateY(100px);
-            background: var(--caramel-dark);
-            color: var(--cream);
-            padding: 16px 32px;
-            border-radius: 4px;
-            font-size: 14px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 0.85rem;
             z-index: 6000;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            white-space: nowrap;
         }
         .toast.show {
-            transform: translateX(50%) translateY(0);
             opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .section { padding: 60px 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .pdp-grid { grid-template-columns: 1fr; }
-            .pdp-image-section { min-height: 300px; }
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                padding: 0 40px 0 0;
-                justify-content: flex-start;
-            }
-            .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                text-align: right;
-                padding: 0;
-            }
-            .timeline-line { right: 10px; }
-            .timeline-dot { right: 10px; }
-            .form-row { grid-template-columns: 1fr; }
-            .payment-methods { grid-template-columns: 1fr; }
-            .gift-grid { grid-template-columns: 1fr; }
+            transform: translateX(-50%) translateY(0);
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* WhatsApp float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1500;
+            box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+            transition: transform 0.3s;
+            border: none;
+            font-size: 1.8rem;
+            color: white;
+        }
+        .whatsapp-float:active {
+            transform: scale(0.9);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <a href="#" class="nav-logo">
-            <span class="ar">كراميسك</span>
-            <span>Karamisc</span>
-        </a>
+        <a href="#" class="nav-logo"><span class="ar">كراميسك</span> Karamisc</a>
         <ul class="nav-links">
-            <li><a href="#seasonal">الموسمية</a></li>
-            <li><a href="#products">جميع الكيكات</a></li>
-            <li><a href="#timeline">طريقة التحضير</a></li>
-            <li><a href="#gifts">صناديق الهدايا</a></li>
+            <li><a href="#products">القائمة</a></li>
+            <li><a href="#gifts">هدايا</a></li>
+            <li><a href="#timeline">قصتنا</a></li>
         </ul>
         <div class="nav-cart" id="navCart">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 01-8 0"/>
-            </svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
             <span class="cart-count" id="cartCount">0</span>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-video-container">
-            <div class="caramel-glow"></div>
-            <canvas id="cocoaCanvas"></canvas>
-        </div>
+        <div class="caramel-glow"></div>
+        <canvas id="cocoaCanvas"></canvas>
         <div class="hero-content">
-            <h1 class="hero-brand">
-                Karamisc
-                <span class="ar-brand">كراميسك</span>
-            </h1>
-            <p class="hero-tagline">كيك الكراميل بجميع أنواعه</p>
+            <h1 class="hero-brand">Karamisc<span class="ar-brand">كراميسك</span></h1>
+            <p class="hero-tagline">كيك الكراميل بجميع أنواعه · طرابلس</p>
             <a href="#products" class="hero-cta">استكشف القائمة</a>
         </div>
-        <div class="scroll-indicator">
-            <span>اسحب للأسفل</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
+        <div class="scroll-indicator"><span>↓</span></div>
     </section>
 
-    <!-- Seasonal Section -->
-    <section class="seasonal-section" id="seasonal">
-        <div class="section">
-            <h2 class="section-title">موسمية</h2>
-            <p class="section-subtitle">عروض محدودة</p>
-            <div class="seasonal-grid" id="seasonalGrid"></div>
+    <section class="section" id="products">
+        <h2 class="section-title">جميع المنتجات</h2>
+        <p class="section-subtitle">اختر كيك الكراميل المفضل لديك</p>
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">الكل</button>
+            <button class="filter-tab" data-filter="cake">كيك</button>
+            <button class="filter-tab" data-filter="cheesecake">تشيز كيك</button>
+            <button class="filter-tab" data-filter="special">خاص</button>
+            <button class="filter-tab" data-filter="gift">هدايا</button>
         </div>
+        <div class="products-grid" id="productsGrid"></div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products-section" id="products">
-        <div class="section">
-            <h2 class="section-title">جميع أنواع الكيك</h2>
-            <p class="section-subtitle">قائمتنا الكاملة</p>
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">الكل</button>
-                <button class="filter-tab" data-filter="cake">كيك تقليدي</button>
-                <button class="filter-tab" data-filter="cheesecake">تشيز كيك</button>
-                <button class="filter-tab" data-filter="tart">تارت</button>
-                <button class="filter-tab" data-filter="gift">هدايا</button>
-            </div>
-            <div class="products-grid" id="productsGrid"></div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
     <section class="timeline-section" id="timeline">
         <div class="section">
             <h2 class="section-title">رحلة الكراميل</h2>
-            <p class="section-subtitle">من المكونات إلى الكيك</p>
             <div class="timeline">
                 <div class="timeline-line"></div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-number">01</div>
-                        <h3 class="timeline-title">اختيار المكونات</h3>
-                        <p class="timeline-desc">ننتقي أجود أنواع الزبدة والسكر البني والقشطة الطازجة لنضمن نكهة كراميل غنية لا تُقاوم.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-number">02</div>
-                        <h3 class="timeline-title">تحضير الكراميل</h3>
-                        <p class="timeline-desc">يُطهى السكر بعناية على درجة حرارة مضبوطة حتى يصل إلى اللون الذهبي المثالي، ثم تُضاف الزبدة والقشدة لتكوين صلصة حريرية.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-number">03</div>
-                        <h3 class="timeline-title">خبز الطبقات</h3>
-                        <p class="timeline-desc">تُخبز كل طبقة من الكيك الإسفنجي على حدة حتى تصبح هشة وذهبية، ثم تُشبع بشراب الكراميل الدافئ.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-number">04</div>
-                        <h3 class="timeline-title">تجميع الكيك</h3>
-                        <p class="timeline-desc">تُرص الطبقات مع كريمة الزبدة بالكراميل وتُغطى بسخاء، ثم تُزين بالمكسرات أو رقائق الكراميل المقرمشة.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-number">05</div>
-                        <h3 class="timeline-title">التغليف والتقديم</h3>
-                        <p class="timeline-desc">يُعبأ كل قالب بعناية في صندوق أنيق ليصل إليك طازجًا وجاهزًا للاستمتاع في مناسبتك الخاصة.</p>
-                    </div>
-                </div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div><div class="timeline-number">01</div><h3 class="timeline-title">مكونات طازجة</h3><p class="timeline-desc">نختار أجود أنواع الزبدة والقشطة الطازجة يومياً من أسواق طرابلس.</p></div></div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div><div class="timeline-number">02</div><h3 class="timeline-title">كراميل ذهبي</h3><p class="timeline-desc">يُطهى السكر البني ببطء حتى يصل للونه الذهبي المثالي.</p></div></div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div><div class="timeline-number">03</div><h3 class="timeline-title">خبز يومي</h3><p class="timeline-desc">تُخبز كل قالب كيك في نفس اليوم لضمان طراوة لا تُقاوم.</p></div></div>
+                <div class="timeline-item reveal"><div class="timeline-dot"></div><div><div class="timeline-number">04</div><h3 class="timeline-title">توصيل مبرد</h3><p class="timeline-desc">نوصلك طلبك مبرداً في طرابلس خلال ساعتين.</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- Gift Guide -->
-    <section class="gift-section" id="gifts">
-        <div class="section">
-            <h2 class="section-title">صناديق الهدايا</h2>
-            <p class="section-subtitle">لحظات تستحق كراميسك</p>
-            <div class="gift-grid" id="giftGrid"></div>
-        </div>
+    <section class="section" id="gifts">
+        <h2 class="section-title">صناديق الهدايا</h2>
+        <p class="section-subtitle">لحظات تستحق كراميسك</p>
+        <div class="gift-grid" id="giftGrid"></div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-grid">
-            <div>
-                <div class="footer-brand">كراميسك Karamisc</div>
-                <p class="footer-desc">نحو كيك كراميل لا يُنسى. نمزج بين الوصفات التقليدية والجودة العصرية لنقدم لك تجربة طعم استثنائية في كل قضمة.</p>
-            </div>
-            <div>
-                <h4 class="footer-title">تسوق</h4>
-                <ul class="footer-links">
-                    <li><a href="#products">جميع الكيكات</a></li>
-                    <li><a href="#seasonal">العروض الموسمية</a></li>
-                    <li><a href="#gifts">الهدايا</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-title">عن كراميسك</h4>
-                <ul class="footer-links">
-                    <li><a href="#timeline">طريقة التحضير</a></li>
-                    <li><a href="#">المكونات</a></li>
-                    <li><a href="#">اتصل بنا</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-title">مساعدة</h4>
-                <ul class="footer-links">
-                    <li><a href="#">سياسة التوصيل</a></li>
-                    <li><a href="#">الأسئلة الشائعة</a></li>
-                    <li><a href="#">معلومات الحساسية</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 كراميسك. جميع الحقوق محفوظة.</span>
-            <span>صُنع بشغف في الرياض</span>
-        </div>
+        <div class="footer-brand">كراميسك Karamisc</div>
+        <p class="footer-desc">متخصصون في كيك الكراميل الفاخر. نقدم تشكيلة فريدة من الحلويات المصنوعة يدوياً في قلب طرابلس.</p>
+        <div class="footer-location">📍 طرابلس، ليبيا | 📞 واتساب: <a href="https://wa.me/218918977218" style="color:var(--gold);">+218 91-8977218</a></div>
+        <div class="footer-bottom">© 2026 كراميسك. جميع الحقوق محفوظة.</div>
     </footer>
 
     <!-- Cart Drawer -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <h3 class="cart-title">سلة المشتريات</h3>
-            <button class="cart-close" id="cartClose">×</button>
-        </div>
+        <div class="cart-header"><h3>🛒 سلة المشتريات</h3><button class="cart-close" id="cartClose">✕</button></div>
         <div class="cart-items" id="cartItems"></div>
         <div class="cart-footer" id="cartFooter">
-            <div class="free-shipping-bar">
-                <div class="free-shipping-progress" id="shippingProgress"></div>
-            </div>
-            <p class="free-shipping-text" id="shippingText">توصيل مجاني للطلبات فوق 200 ريال</p>
-            <div class="gift-wrap-option">
-                <input type="checkbox" id="giftWrap">
-                <label for="giftWrap">تغليف هدايا فاخر (+15 ريال)</label>
-            </div>
-            <textarea class="gift-message" id="giftMessage" rows="3" placeholder="أضف رسالة للهدية..."></textarea>
-            <div class="cart-subtotal">
-                <span>المجموع</span>
-                <span id="cartSubtotal">0 ريال</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn">إتمام الشراء</button>
+            <div class="cart-subtotal"><span>المجموع</span><span id="cartSubtotal">0 د.ل</span></div>
+            <button class="whatsapp-btn" id="whatsappOrderBtn">
+                <span>📱</span> اطلب عبر واتساب
+            </button>
         </div>
     </div>
 
-    <!-- Product Detail Modal -->
+    <!-- PDP Modal -->
     <div class="pdp-overlay" id="pdpOverlay">
         <div class="pdp-container" id="pdpContainer">
-            <button class="pdp-close" id="pdpClose">×</button>
-            <div class="pdp-grid">
-                <div class="pdp-image-section">
-                    <div class="pdp-emoji" id="pdpEmoji">🍰</div>
-                </div>
-                <div class="pdp-info">
-                    <h2 class="pdp-name" id="pdpName">اسم المنتج</h2>
-                    <p class="pdp-origin" id="pdpOrigin">النوع</p>
-                    <div class="pdp-price" id="pdpPrice">0 ريال</div>
-                    <div class="pdp-tabs">
-                        <button class="pdp-tab active" data-tab="flavor">الوصف</button>
-                        <button class="pdp-tab" data-tab="tasting">ملاحظات التذوق</button>
-                        <button class="pdp-tab" data-tab="ingredients">المكونات</button>
-                        <button class="pdp-tab" data-tab="pairings">يقترح مع</button>
-                        <button class="pdp-tab" data-tab="reviews">التقييمات</button>
+            <button class="pdp-close" id="pdpClose">✕</button>
+            <div class="pdp-image" id="pdpEmoji">🍰</div>
+            <div class="pdp-info">
+                <h2 class="pdp-name" id="pdpName"></h2>
+                <p id="pdpOrigin" style="color:#888;font-size:0.85rem;"></p>
+                <div class="pdp-price" id="pdpPrice"></div>
+                <p id="pdpDesc" style="font-size:0.85rem;color:#555;line-height:1.6;"></p>
+                <div class="pdp-qty-row">
+                    <div class="pdp-qty">
+                        <button id="pdpQtyMinus">−</button><span id="pdpQty">1</span><button id="pdpQtyPlus">+</button>
                     </div>
-                    <div class="pdp-tab-content active" id="tab-flavor">
-                        <div class="flavor-map-visual" id="flavorMap"></div>
-                    </div>
-                    <div class="pdp-tab-content" id="tab-tasting">
-                        <div id="tastingNotes"></div>
-                    </div>
-                    <div class="pdp-tab-content" id="tab-ingredients">
-                        <div id="ingredientsContent"></div>
-                    </div>
-                    <div class="pdp-tab-content" id="tab-pairings">
-                        <div id="pairingsContent"></div>
-                    </div>
-                    <div class="pdp-tab-content" id="tab-reviews">
-                        <div id="reviewsContent"></div>
-                    </div>
-                    <div class="pdp-add-cart">
-                        <div class="pdp-qty">
-                            <button id="pdpQtyMinus">−</button>
-                            <span id="pdpQty">1</span>
-                            <button id="pdpQtyPlus">+</button>
-                        </div>
-                        <button class="pdp-add-btn" id="pdpAddBtn">أضف إلى السلة</button>
-                    </div>
+                    <button class="pdp-add-btn" id="pdpAddBtn">أضف للسلة</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Checkout Modal -->
-    <div class="checkout-overlay" id="checkoutOverlay">
-        <div class="checkout-container">
-            <div class="checkout-header">
-                <h2>إتمام الشراء</h2>
-                <div class="checkout-steps">
-                    <div class="step active" data-step="1"><div class="step-number">1</div><span class="step-label">المعلومات</span></div>
-                    <div class="step-line"></div>
-                    <div class="step" data-step="2"><div class="step-number">2</div><span class="step-label">التوصيل</span></div>
-                    <div class="step-line"></div>
-                    <div class="step" data-step="3"><div class="step-number">3</div><span class="step-label">الدفع</span></div>
-                    <div class="step-line"></div>
-                    <div class="step" data-step="4"><div class="step-number">4</div><span class="step-label">تأكيد</span></div>
-                </div>
-            </div>
-            <div class="checkout-body">
-                <div class="checkout-step-content active" id="checkout-step-1">
-                    <div class="form-row">
-                        <div class="form-group"><label>الاسم الأول</label><input type="text" id="firstName"></div>
-                        <div class="form-group"><label>الاسم الأخير</label><input type="text" id="lastName"></div>
-                    </div>
-                    <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="email"></div>
-                    <div class="form-group"><label>رقم الجوال</label><input type="tel" id="phone"></div>
-                    <div class="checkout-actions"><div></div><button class="btn-primary" onclick="nextStep(2)">متابعة</button></div>
-                </div>
-                <div class="checkout-step-content" id="checkout-step-2">
-                    <div class="form-group"><label>العنوان التفصيلي</label><input type="text" id="address" placeholder="المدينة / الحي / الشارع"></div>
-                    <div class="form-row">
-                        <div class="form-group"><label>المدينة</label><input type="text" id="city"></div>
-                        <div class="form-group"><label>الرمز البريدي</label><input type="text" id="postal"></div>
-                    </div>
-                    <div class="shipping-option selected" onclick="selectShipping(this, 0)">
-                        <input type="radio" name="shipping" checked><div class="shipping-option-details"><h4>توصيل عادي</h4><p>2-3 أيام عمل</p></div><div class="shipping-price">مجاني</div>
-                    </div>
-                    <div class="shipping-option" onclick="selectShipping(this, 25)">
-                        <input type="radio" name="shipping"><div class="shipping-option-details"><h4>توصيل سريع</h4><p>في نفس اليوم</p></div><div class="shipping-price">+25 ريال</div>
-                    </div>
-                    <div class="checkout-actions"><button class="btn-secondary" onclick="prevStep(1)">رجوع</button><button class="btn-primary" onclick="nextStep(3)">متابعة</button></div>
-                </div>
-                <div class="checkout-step-content" id="checkout-step-3">
-                    <div class="payment-methods">
-                        <div class="payment-method selected" onclick="selectPayment(this)"><div class="payment-method-icon">💳</div><div>بطاقة ائتمان</div></div>
-                        <div class="payment-method" onclick="selectPayment(this)"><div class="payment-method-icon">📱</div><div>مدى / أبل باي</div></div>
-                    </div>
-                    <div class="checkout-summary">
-                        <div class="summary-row"><span>المجموع الفرعي</span><span id="summarySubtotal">0 ريال</span></div>
-                        <div class="summary-row"><span>التوصيل</span><span id="summaryShipping">0 ريال</span></div>
-                        <div class="summary-row"><span>تغليف الهدايا</span><span id="summaryGift">0 ريال</span></div>
-                        <div class="summary-row total"><span>الإجمالي</span><span id="summaryTotal">0 ريال</span></div>
-                    </div>
-                    <div class="checkout-actions"><button class="btn-secondary" onclick="prevStep(2)">رجوع</button><button class="btn-primary" onclick="nextStep(4)">تأكيد الطلب</button></div>
-                </div>
-                <div class="checkout-step-content" id="checkout-step-4">
-                    <div class="order-success">
-                        <div class="success-icon">🎉</div>
-                        <h3>تم الطلب بنجاح!</h3>
-                        <p>شكراً لك. سيتم تجهيز طلبك بعناية.</p>
-                        <div class="order-number" id="orderNumber">#KR-2026-4427</div>
-                        <button class="btn-primary" style="margin-top:24px;" onclick="closeCheckout()">إنهاء</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Secret Recipe Easter Egg -->
-    <div class="secret-recipe-overlay" id="secretOverlay">
-        <div class="secret-recipe-content">
-            <h3 class="secret-title">الوصفة السرية لكراميسك</h3>
-            <p class="secret-subtitle">صوص الكراميل الذهبي</p>
-            <div class="secret-recipe-text">
-                سكر بني ... 200 غ<br>
-                زبدة ... 100 غ<br>
-                قشطة ... 120 مل<br>
-                فانيليا ... ملعقة صغيرة<br>
-                رشة ملح بحري<br>
-                يُذاب السكر على نار هادئة ثم تضاف الزبدة والقشطة تدريجياً مع التحريك حتى يصبح الخليط ناعماً ولامعاً.
-            </div>
-            <button class="secret-close" onclick="closeSecret()">احتفظ بالسر</button>
-        </div>
-    </div>
-    <div class="truffle-hint" id="truffleHint" title="اضغط عدة مرات...">🍮</div>
-
-    <div class="toast" id="toast"><span id="toastMessage">تمت الإضافة للسلة</span></div>
+    <button class="whatsapp-float" onclick="window.open('https://wa.me/218918977218','_blank')" title="تواصل واتساب">💬</button>
+    <div class="toast" id="toast"></div>
 
     <script>
-        // ==================== DATA ====================
+        // ==================== PRODUCTS DATA ====================
         const products = [
-            {
-                id: 1,
-                name: "كيكة الكراميل الكلاسيكية",
-                origin: "طبقات إسفنجية بصوص الكراميل",
-                price: 120,
-                category: "cake",
-                emoji: "🍰",
-                isGift: false,
-                seasonal: false,
-                flavor: { sweet: 85, rich: 90, nutty: 30, creamy: 80 },
-                tasting: "كيك إسفنجي فانيلا مغطى بطبقات من كريمة الزبدة بالكراميل ومزين بالجوز المحمص. نكهة غنية ومتوازنة مع لمسة من الفانيليا.",
-                ingredients: "دقيق، زبدة، سكر بني، قشطة، بيض، فانيليا، جوز، بيكنج باودر",
-                allergens: ["جلوتين", "مكسرات", "بيض", "ألبان"],
-                pairings: [{ icon: "☕", name: "قهوة عربية" }, { icon: "🍵", name: "شاي كرك" }],
-                reviews: [{ name: "نورة", rating: 5, text: "ألذ كيكة كراميل تذوقتها! الكريمة ناعمة والنكهة رهيبة." }]
-            },
-            {
-                id: 2,
-                name: "تشيز كيك الكراميل",
-                origin: "تشيز كيك بارد بصوص الكراميل",
-                price: 140,
-                category: "cheesecake",
-                emoji: "🧀",
-                isGift: false,
-                seasonal: false,
-                flavor: { sweet: 70, rich: 95, tangy: 40, creamy: 95 },
-                tasting: "قاعدة بسكويت مقرمش مع حشوة جبن كريمي غنية، مغطاة بطبقة كثيفة من صوص الكراميل المملح. قوام كريمي يذوب في الفم.",
-                ingredients: "بسكويت، زبدة، جبن كريمي، سكر، قشطة، كراميل، ملح بحري",
-                allergens: ["جلوتين", "ألبان", "بيض"],
-                pairings: [{ icon: "🍓", name: "توت طازج" }, { icon: "☕", name: "اسبريسو" }],
-                reviews: [{ name: "سلمان", rating: 5, text: "الكراميل المملح ياخذ العقل! حلاوة متوازنة جداً." }]
-            },
-            {
-                id: 3,
-                name: "براوني الكراميل",
-                origin: "براوني شوكولاتة بصوص الكراميل",
-                price: 90,
-                category: "cake",
-                emoji: "🍫",
-                isGift: false,
-                seasonal: false,
-                flavor: { sweet: 80, rich: 90, chocolatey: 85, gooey: 70 },
-                tasting: "براوني شوكولاتة داكنة كثيفة مع عروق من صوص الكراميل اللزج، مرشوشة بملح البحر. مثالية لمحبي الشوكولاتة.",
-                ingredients: "شوكولاتة داكنة، زبدة، سكر، بيض، دقيق، كراميل",
-                allergens: ["جلوتين", "بيض", "ألبان"],
-                pairings: [{ icon: "🥛", name: "حليب بارد" }],
-                reviews: [{ name: "ريم", rating: 4, text: "لذيذ جداً، لكن الكمية صغيرة شوي." }]
-            },
-            {
-                id: 4,
-                name: "تارت الكراميل بالتمر",
-                origin: "موسمي - تارت الكراميل والتمر",
-                price: 110,
-                category: "tart",
-                emoji: "🥧",
-                isGift: false,
-                seasonal: true,
-                flavor: { sweet: 90, rich: 80, fruity: 70, nutty: 60 },
-                tasting: "تارت محشو بكريمة التمر والكراميل ومغطى بطبقة من الكراميل المقرمش. حلاوة طبيعية من التمر مع عمق الكراميل.",
-                ingredients: "دقيق، زبدة، تمر، كراميل، قشطة، لوز",
-                allergens: ["جلوتين", "مكسرات", "ألبان"],
-                pairings: [{ icon: "🍵", name: "شاي مغربي" }],
-                reviews: [{ name: "عبدالله", rating: 5, text: "التمر مع الكراميل فكرة عبقرية! طعم رمضاني رائع." }]
-            },
-            {
-                id: 5,
-                name: "كب كيك الكراميل (6 حبات)",
-                origin: "كب كيك صغير بصوص الكراميل",
-                price: 80,
-                category: "cake",
-                emoji: "🧁",
-                isGift: false,
-                seasonal: false,
-                flavor: { sweet: 85, rich: 70, creamy: 85, fun: 100 },
-                tasting: "كب كيك فانيلا طري محشو بصوص الكراميل ومغطى بكريمة الزبدة الذهبية. مناسب للحفلات.",
-                ingredients: "دقيق، زبدة، سكر، بيض، كراميل، قشطة",
-                allergens: ["جلوتين", "بيض", "ألبان"],
-                pairings: [{ icon: "🧃", name: "عصير برتقال" }],
-                reviews: [{ name: "ليان", rating: 5, text: "الأطفال عشقوها! الحشوة مفاجأة حلوة." }]
-            },
-            {
-                id: 6,
-                name: "طبق كيك الكراميل المشكل",
-                origin: "مجموعة تذوق – 4 أنواع",
-                price: 250,
-                category: "gift",
-                emoji: "🎁",
-                isGift: true,
-                seasonal: false,
-                flavor: { sweet: 80, rich: 85, variety: 100 },
-                tasting: "يحتوي على شرائح من كيك الكراميل الكلاسيكي، تشيز كيك الكراميل، براوني الكراميل، وتارت الكراميل. مثالي للهدايا.",
-                ingredients: "متنوعة حسب القطع",
-                allergens: ["جلوتين", "بيض", "ألبان", "مكسرات"],
-                pairings: [{ icon: "☕", name: "قهوة" }],
-                reviews: [{ name: "مها", rating: 5, text: "أجمل هدية! الكل انبسط بالتنوع." }]
-            }
+            { id:1, name:"كيك كراميل كلاسيكي", origin:"طبقات إسفنجية بصوص الكراميل", price:85, category:"cake", emoji:"🍰", desc:"كيك إسفنجي فانيلا مغطى بكريمة الزبدة بالكراميل ومزين بالجوز. نكهة غنية ومتوازنة.", gift:false, seasonal:false },
+            { id:2, name:"تشيز كيك الكراميل", origin:"تشيز كيك بارد بصوص الكراميل", price:95, category:"cheesecake", emoji:"🧀", desc:"قاعدة بسكويت مع حشوة جبن كريمي غنية وطبقة كراميل مملح.", gift:false, seasonal:false },
+            { id:3, name:"براوني الكراميل", origin:"براوني شوكولاتة بصوص الكراميل", price:75, category:"cake", emoji:"🍫", desc:"براوني شوكولاتة داكنة مع عروق كراميل لزجة ورشة ملح بحري.", gift:false, seasonal:false },
+            { id:4, name:"تارت الكراميل بالتمر", origin:"تارت كراميل وتمر طرابلسي", price:70, category:"cake", emoji:"🥧", desc:"تارت محشو بكريمة التمر والكراميل مع طبقة كراميل مقرمشة.", gift:false, seasonal:true },
+            { id:5, name:"كب كيك الكراميل (6)", origin:"6 حبات كب كيك محشية", price:60, category:"cake", emoji:"🧁", desc:"كب كيك فانيلا طري محشو بصوص الكراميل ومغطى بكريمة ذهبية.", gift:false, seasonal:false },
+            { id:6, name:"حلويات مشكلة", origin:"تشكيلة منوعة من حلويات الكراميل", price:120, category:"special", emoji:"🍬", desc:"طبق يضم قطعاً مختارة من أشهر حلوياتنا: كيك، براوني، تارت، وكب كيك.", gift:false, seasonal:false },
+            { id:7, name:"مالفي زمان", origin:"كيكة مالفي كراميل تقليدية", price:90, category:"special", emoji:"🥮", desc:"وصفة قديمة من المطبخ الليبي: كيكة مالفي محشوة بصوص الكراميل والمكسرات.", gift:false, seasonal:true },
+            { id:8, name:"تورتة زمان", origin:"تورتة كراميل فاخرة", price:150, category:"special", emoji:"🎂", desc:"تورتة كبيرة متعددة الطبقات بكريمة الكراميل والجوز، مثالية للمناسبات.", gift:true, seasonal:false },
+            { id:9, name:"طبق كيك الكراميل المشكل", origin:"مجموعة تذوق – 4 أنواع", price:180, category:"gift", emoji:"🎁", desc:"يحتوي على شرائح متنوعة من جميع كيكات الكراميل لدينا. مثالي للهدايا.", gift:true, seasonal:false }
         ];
 
         const gifts = [
-            { id: "g1", name: "صندوق تذوق الكراميل", desc: "4 قطع مختارة من أشهر كيكاتنا", price: 150, emoji: "🎀" },
-            { id: "g2", name: "صندوق الهدايا الفاخر", desc: "تشكيلة 8 قطع مع تغليف ذهبي", price: 280, emoji: "💝" },
-            { id: "g3", name: "صندوق المناسبات", desc: "12 قطعة مع إمكانية نقش الاسم", price: 450, emoji: "👑" }
+            { id:"g1", name:"صندوق تذوق الكراميل", desc:"4 قطع مختارة", price:99, emoji:"🎀" },
+            { id:"g2", name:"صندوق الهدايا الفاخر", desc:"8 قطع مع تغليف ذهبي", price:180, emoji:"💝" },
+            { id:"g3", name:"صندوق المناسبات", desc:"12 قطعة + نقش الاسم", price:280, emoji:"👑" }
         ];
 
+        // ==================== STATE ====================
         let cart = [];
         let currentProduct = null;
         let currentPdpQty = 1;
-        let checkoutStep = 1;
-        let shippingCost = 0;
-        let giftWrapCost = 0;
-        let truffleClicks = 0;
 
         const navbar = document.getElementById('navbar');
         const cartOverlay = document.getElementById('cartOverlay');
@@ -2006,23 +961,15 @@
         const cartItems = document.getElementById('cartItems');
         const cartCount = document.getElementById('cartCount');
         const cartSubtotal = document.getElementById('cartSubtotal');
-        const shippingProgress = document.getElementById('shippingProgress');
-        const shippingText = document.getElementById('shippingText');
-        const giftWrapCheckbox = document.getElementById('giftWrap');
-        const giftMessage = document.getElementById('giftMessage');
         const pdpOverlay = document.getElementById('pdpOverlay');
-        const checkoutOverlay = document.getElementById('checkoutOverlay');
         const toast = document.getElementById('toast');
-        const secretOverlay = document.getElementById('secretOverlay');
-        const truffleHint = document.getElementById('truffleHint');
 
-        // Canvas particles
+        // ==================== CANVAS PARTICLES ====================
         const canvas = document.getElementById('cocoaCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); window.addEventListener('resize', resizeCanvas);
         class Particle {
             constructor() { this.reset(); }
             reset() {
@@ -2030,220 +977,58 @@
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 3 + 1;
                 this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = Math.random() * 0.3 + 0.2;
-                this.opacity = Math.random() * 0.5 + 0.1;
-                this.color = Math.random() > 0.5 ? '#E6B87A' : '#D4AF37';
+                this.speedY = Math.random() * 0.3 + 0.15;
+                this.opacity = Math.random() * 0.4 + 0.1;
             }
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
+                this.x += this.speedX; this.y += this.speedY;
                 if (this.y > canvas.height) { this.y = -10; this.x = Math.random() * canvas.width; }
             }
             draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.opacity;
-                ctx.fill();
-                ctx.globalAlpha = 1;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(212,175,55,${this.opacity})`; ctx.fill();
             }
         }
-        for (let i=0; i<80; i++) particles.push(new Particle());
-        function animateParticles() {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
+        for (let i=0; i<60; i++) particles.push(new Particle());
+        function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
+        animate();
 
-        // Navbar scroll
-        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+        // ==================== NAV SCROLL ====================
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30));
 
-        // Render functions
+        // ==================== RENDER ====================
         function renderProducts(filter='all') {
             const grid = document.getElementById('productsGrid');
             const filtered = filter==='all' ? products : products.filter(p => p.category===filter);
             grid.innerHTML = filtered.map(p => `
                 <div class="product-card" onclick="openPdp(${p.id})">
-                    ${p.isGift ? '<div class="gift-ribbon">هدية</div>' : ''}
+                    ${p.gift ? '<div class="gift-ribbon">هدية</div>' : ''}
                     <div class="product-image"><div class="product-emoji">${p.emoji}</div></div>
                     <div class="product-info">
-                        <h3 class="product-name">${p.name}</h3>
-                        <p class="product-origin">${p.origin}</p>
+                        <div class="product-name">${p.name}</div>
+                        <div class="product-origin">${p.origin}</div>
                         <div class="product-footer">
-                            <span class="product-price">${p.price} ريال</span>
+                            <span class="product-price">${p.price} د.ل</span>
                             <button class="quick-add" onclick="event.stopPropagation(); addToCart(${p.id})">+</button>
                         </div>
                     </div>
                 </div>
             `).join('');
         }
-        function renderSeasonal() {
-            const seasonal = products.filter(p => p.seasonal);
-            document.getElementById('seasonalGrid').innerHTML = seasonal.map(p => `
-                <div class="seasonal-card" onclick="openPdp(${p.id})">
-                    <div class="seasonal-card-image"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:100px;opacity:0.5;">${p.emoji}</div><div class="seasonal-badge">موسمي</div></div>
-                    <div class="seasonal-card-content">
-                        <h3 class="seasonal-card-title">${p.name}</h3>
-                        <p class="seasonal-card-desc">${p.origin}</p>
-                        <div class="seasonal-card-price"><span>${p.price} ريال</span><button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${p.id})">أضف للسلة</button></div>
-                    </div>
-                </div>
-            `).join('');
-        }
+
         function renderGifts() {
             document.getElementById('giftGrid').innerHTML = gifts.map(g => `
                 <div class="gift-card">
                     <div class="gift-icon">${g.emoji}</div>
-                    <h3 class="gift-title">${g.name}</h3>
-                    <p class="gift-desc">${g.desc}</p>
-                    <div class="gift-price">${g.price} ريال</div>
+                    <div class="gift-title">${g.name}</div>
+                    <div class="gift-desc">${g.desc}</div>
+                    <div class="gift-price">${g.price} د.ل</div>
                     <button class="add-to-cart-btn" onclick="addGiftToCart('${g.id}')">أضف للسلة</button>
                 </div>
             `).join('');
         }
 
-        // Cart logic
-        function addToCart(productId, qty=1) {
-            const product = products.find(p => p.id===productId);
-            if(!product) return;
-            const existing = cart.find(item => item.id===productId);
-            if(existing) existing.qty += qty;
-            else cart.push({ id:productId, qty, product });
-            updateCart(); showToast('تمت الإضافة للسلة');
-        }
-        function addGiftToCart(giftId) {
-            const gift = gifts.find(g => g.id===giftId);
-            if(!gift) return;
-            const existing = cart.find(item => item.giftId===giftId);
-            if(existing) existing.qty++;
-            else cart.push({ giftId, qty:1, product: { name: gift.name, price: gift.price, emoji: gift.emoji, origin: "هدية" } });
-            updateCart(); showToast('تمت الإضافة للسلة');
-        }
-        function removeFromCart(index) { cart.splice(index,1); updateCart(); }
-        function updateQty(index, delta) {
-            cart[index].qty += delta;
-            if(cart[index].qty <= 0) removeFromCart(index);
-            else updateCart();
-        }
-        function updateCart() {
-            const totalQty = cart.reduce((sum,item) => sum+item.qty, 0);
-            cartCount.textContent = totalQty;
-            const subtotal = cart.reduce((sum,item) => sum+(item.product.price*item.qty), 0);
-            cartSubtotal.textContent = subtotal + ' ريال';
-            const threshold = 200;
-            const progress = Math.min((subtotal/threshold)*100, 100);
-            shippingProgress.style.width = progress+'%';
-            const remaining = Math.max(threshold-subtotal, 0);
-            shippingText.textContent = remaining>0 ? `أضف ${remaining} ريال للشحن المجاني` : 'أنت تستحق الشحن المجاني!';
-            if(cart.length===0) cartItems.innerHTML = '<div class="empty-cart"><div class="empty-cart-icon">🧁</div><p>سلتك فارغة</p></div>';
-            else cartItems.innerHTML = cart.map((item,i) => `
-                <div class="cart-item">
-                    <div class="cart-item-image">${item.product.emoji || '🎁'}</div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.product.name}</div>
-                        <div class="cart-item-variant">${item.product.origin}</div>
-                        <div class="cart-item-price">${item.product.price} ريال</div>
-                        <div class="cart-item-qty">
-                            <button class="qty-btn" onclick="updateQty(${i}, -1)">−</button><span>${item.qty}</span><button class="qty-btn" onclick="updateQty(${i}, 1)">+</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-        giftWrapCheckbox.addEventListener('change', (e) => {
-            giftWrapCost = e.target.checked ? 15 : 0;
-            giftMessage.classList.toggle('active', e.target.checked);
-        });
-
-        document.getElementById('navCart').addEventListener('click', () => { cartOverlay.classList.add('active'); cartDrawer.classList.add('active'); });
-        function closeCart() { cartOverlay.classList.remove('active'); cartDrawer.classList.remove('active'); }
-        cartOverlay.addEventListener('click', closeCart);
-        document.getElementById('cartClose').addEventListener('click', closeCart);
-
-        // PDP
-        function openPdp(productId) {
-            currentProduct = products.find(p => p.id===productId);
-            if(!currentProduct) return;
-            currentPdpQty = 1;
-            document.getElementById('pdpEmoji').textContent = currentProduct.emoji;
-            document.getElementById('pdpName').textContent = currentProduct.name;
-            document.getElementById('pdpOrigin').textContent = currentProduct.origin;
-            document.getElementById('pdpPrice').textContent = currentProduct.price + ' ريال';
-            document.getElementById('pdpQty').textContent = currentPdpQty;
-
-            const flavorLabels = { sweet:'حلاوة', rich:'غنى', nutty:'مكسرات', creamy:'كريمي', tangy:'حموضة', chocolatey:'شوكولاتة', gooey:'طراوة', fruity:'فواكه', fun:'متعة', variety:'تنوع' };
-            const flavorColors = { sweet:'#C68E4E', rich:'#8B5A2B', nutty:'#A0522D', creamy:'#E6B87A', tangy:'#CD853F', chocolatey:'#3E2723', gooey:'#D2691E', fruity:'#FF8C00', fun:'#FFD700', variety:'#DAA520' };
-            document.getElementById('flavorMap').innerHTML = Object.entries(currentProduct.flavor).map(([k,v]) => `
-                <div><div class="flavor-label"><span>${flavorLabels[k] || k}</span><span>${v}%</span></div><div class="flavor-bar"><div class="flavor-bar-fill" style="width:${v}%; background:${flavorColors[k] || '#ccc'};"></div></div></div>
-            `).join('');
-
-            document.getElementById('tastingNotes').innerHTML = `<div class="tasting-note"><div class="tasting-note-title">ملاحظات التذوق</div><div class="tasting-note-text">${currentProduct.tasting}</div></div>`;
-            document.getElementById('ingredientsContent').innerHTML = `<div class="tasting-note"><div class="tasting-note-title">المكونات</div><div class="tasting-note-text">${currentProduct.ingredients}</div></div><div style="margin-top:20px;">${currentProduct.allergens.map(a => `<span class="allergen-tag">${a}</span>`).join('')}</div>`;
-            document.getElementById('pairingsContent').innerHTML = currentProduct.pairings.map(p => `<div class="pairing-item"><span class="pairing-icon">${p.icon}</span><span>${p.name}</span></div>`).join('');
-            document.getElementById('reviewsContent').innerHTML = currentProduct.reviews.map(r => `
-                <div class="review-card"><div class="review-header"><span class="reviewer-name">${r.name}</span><span class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span></div><p class="review-text">${r.text}</p></div>
-            `).join('');
-
-            document.querySelectorAll('.pdp-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.pdp-tab-content').forEach(c => c.classList.remove('active'));
-            document.querySelector('[data-tab="flavor"]').classList.add('active');
-            document.getElementById('tab-flavor').classList.add('active');
-            pdpOverlay.classList.add('active');
-        }
-        document.getElementById('pdpClose').addEventListener('click', () => pdpOverlay.classList.remove('active'));
-        pdpOverlay.addEventListener('click', (e) => { if(e.target===pdpOverlay) pdpOverlay.classList.remove('active'); });
-        document.querySelectorAll('.pdp-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.pdp-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.pdp-tab-content').forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(`tab-${tab.dataset.tab}`).classList.add('active');
-            });
-        });
-        document.getElementById('pdpQtyMinus').addEventListener('click', () => { if(currentPdpQty>1) { currentPdpQty--; document.getElementById('pdpQty').textContent = currentPdpQty; } });
-        document.getElementById('pdpQtyPlus').addEventListener('click', () => { currentPdpQty++; document.getElementById('pdpQty').textContent = currentPdpQty; });
-        document.getElementById('pdpAddBtn').addEventListener('click', () => { if(currentProduct) { addToCart(currentProduct.id, currentPdpQty); pdpOverlay.classList.remove('active'); } });
-
-        // Checkout
-        document.getElementById('checkoutBtn').addEventListener('click', () => { closeCart(); checkoutOverlay.classList.add('active'); updateSummary(); });
-        function nextStep(step) {
-            document.querySelectorAll('.checkout-step-content').forEach(c => c.classList.remove('active'));
-            document.getElementById(`checkout-step-${step}`).classList.add('active');
-            document.querySelectorAll('.step').forEach(s => {
-                const n = parseInt(s.dataset.step);
-                s.classList.remove('active','completed');
-                if(n===step) s.classList.add('active');
-                else if(n<step) s.classList.add('completed');
-            });
-            checkoutStep = step;
-            if(step===4) { document.getElementById('orderNumber').textContent = '#KR-2026-'+Math.floor(1000+Math.random()*9000); cart=[]; updateCart(); }
-        }
-        function prevStep(step) { nextStep(step); }
-        function selectShipping(el, cost) { document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('selected')); el.classList.add('selected'); el.querySelector('input').checked=true; shippingCost=cost; updateSummary(); }
-        function selectPayment(el) { document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected')); el.classList.add('selected'); }
-        function updateSummary() {
-            const subtotal = cart.reduce((sum,item)=>sum+(item.product.price*item.qty),0);
-            document.getElementById('summarySubtotal').textContent = subtotal+' ريال';
-            document.getElementById('summaryShipping').textContent = shippingCost===0 ? 'مجاني' : shippingCost+' ريال';
-            document.getElementById('summaryGift').textContent = giftWrapCost===0 ? '0 ريال' : giftWrapCost+' ريال';
-            document.getElementById('summaryTotal').textContent = (subtotal+shippingCost+giftWrapCost)+' ريال';
-        }
-        function closeCheckout() { checkoutOverlay.classList.remove('active'); nextStep(1); }
-        checkoutOverlay.addEventListener('click', (e) => { if(e.target===checkoutOverlay) closeCheckout(); });
-
-        // Easter Egg
-        truffleHint.addEventListener('click', () => {
-            truffleClicks++; truffleHint.classList.add('shake'); setTimeout(()=>truffleHint.classList.remove('shake'),500);
-            if(truffleClicks>=3){ truffleClicks=0; secretOverlay.classList.add('active'); }
-        });
-        function closeSecret() { secretOverlay.classList.remove('active'); }
-        secretOverlay.addEventListener('click', (e) => { if(e.target===secretOverlay) closeSecret(); });
-
-        // Toast
-        function showToast(msg) { document.getElementById('toastMessage').textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2500); }
-
-        // Filters
+        // ==================== FILTER TABS ====================
         document.querySelectorAll('.filter-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
@@ -2252,12 +1037,122 @@
             });
         });
 
-        // Reveal
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold:0.1 });
+        // ==================== CART ====================
+        function addToCart(productId, qty=1) {
+            const product = products.find(p => p.id===productId);
+            if(!product) return;
+            const existing = cart.find(item => item.id===productId);
+            if(existing) existing.qty += qty;
+            else cart.push({ id:productId, qty, product });
+            updateCart(); showToast('تمت الإضافة ✓');
+        }
+
+        function addGiftToCart(giftId) {
+            const gift = gifts.find(g => g.id===giftId);
+            if(!gift) return;
+            const existing = cart.find(item => item.giftId===giftId);
+            if(existing) existing.qty++;
+            else cart.push({ giftId, qty:1, product: { name: gift.name, price: gift.price, emoji: gift.emoji, origin:'هدية' } });
+            updateCart(); showToast('تمت الإضافة ✓');
+        }
+
+        function updateCart() {
+            const totalQty = cart.reduce((sum,item) => sum+item.qty, 0);
+            cartCount.textContent = totalQty;
+            const subtotal = cart.reduce((sum,item) => sum+(item.product.price*item.qty), 0);
+            cartSubtotal.textContent = subtotal + ' د.ل';
+
+            if(cart.length===0) {
+                cartItems.innerHTML = '<div class="empty-cart"><div style="font-size:3rem;">🧁</div><p>سلتك فارغة</p></div>';
+            } else {
+                cartItems.innerHTML = cart.map((item,i) => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${item.product.emoji||'🎁'}</div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.product.name}</div>
+                            <div style="font-size:0.75rem;color:#888;">${item.product.origin||''}</div>
+                            <div class="cart-item-price">${item.product.price} د.ل × ${item.qty}</div>
+                            <div style="display:flex;gap:8px;margin-top:6px;">
+                                <button onclick="updateQty(${i},-1)" style="width:28px;height:28px;border-radius:50%;border:1px solid #ccc;background:white;cursor:pointer;">−</button>
+                                <span style="font-weight:600;">${item.qty}</span>
+                                <button onclick="updateQty(${i},1)" style="width:28px;height:28px;border-radius:50%;border:1px solid #ccc;background:white;cursor:pointer;">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function updateQty(index, delta) {
+            cart[index].qty += delta;
+            if(cart[index].qty <= 0) cart.splice(index,1);
+            updateCart();
+        }
+
+        function sendWhatsAppOrder() {
+            if(cart.length===0) { showToast('السلة فارغة'); return; }
+            let msg = 'مرحباً كراميسك، أود طلب:\n\n';
+            let total = 0;
+            cart.forEach(item => {
+                msg += `• ${item.product.name} (×${item.qty}) - ${item.product.price * item.qty} د.ل\n`;
+                total += item.product.price * item.qty;
+            });
+            msg += `\nالمجموع: ${total} دينار ليبي\n`;
+            msg += 'الرجاء التأكيد والتوصيل إلى: (يرجى كتابة عنوانك)';
+            const url = `https://wa.me/218918977218?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        document.getElementById('whatsappOrderBtn').addEventListener('click', sendWhatsAppOrder);
+
+        // ==================== CART DRAWER ====================
+        document.getElementById('navCart').addEventListener('click', ()=>{
+            cartOverlay.classList.add('active'); cartDrawer.classList.add('active');
+        });
+        function closeCart() { cartOverlay.classList.remove('active'); cartDrawer.classList.remove('active'); }
+        cartOverlay.addEventListener('click', closeCart);
+        document.getElementById('cartClose').addEventListener('click', closeCart);
+
+        // ==================== PDP ====================
+        function openPdp(productId) {
+            currentProduct = products.find(p => p.id===productId);
+            if(!currentProduct) return;
+            currentPdpQty = 1;
+            document.getElementById('pdpEmoji').textContent = currentProduct.emoji;
+            document.getElementById('pdpName').textContent = currentProduct.name;
+            document.getElementById('pdpOrigin').textContent = currentProduct.origin;
+            document.getElementById('pdpPrice').textContent = currentProduct.price + ' د.ل';
+            document.getElementById('pdpDesc').textContent = currentProduct.desc || '';
+            document.getElementById('pdpQty').textContent = '1';
+            pdpOverlay.classList.add('active');
+        }
+        document.getElementById('pdpClose').addEventListener('click', ()=> pdpOverlay.classList.remove('active'));
+        pdpOverlay.addEventListener('click', (e)=>{ if(e.target===pdpOverlay) pdpOverlay.classList.remove('active'); });
+        document.getElementById('pdpQtyMinus').addEventListener('click', ()=>{
+            if(currentPdpQty>1) { currentPdpQty--; document.getElementById('pdpQty').textContent = currentPdpQty; }
+        });
+        document.getElementById('pdpQtyPlus').addEventListener('click', ()=>{
+            currentPdpQty++; document.getElementById('pdpQty').textContent = currentPdpQty;
+        });
+        document.getElementById('pdpAddBtn').addEventListener('click', ()=>{
+            if(currentProduct) { addToCart(currentProduct.id, currentPdpQty); pdpOverlay.classList.remove('active'); }
+        });
+
+        // ==================== TOAST ====================
+        function showToast(msg) {
+            document.getElementById('toast').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(()=> toast.classList.remove('show'), 2200);
+        }
+
+        // ==================== REVEAL ====================
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold:0.15 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Init
-        renderProducts(); renderSeasonal(); renderGifts(); updateCart();
+        // ==================== INIT ====================
+        renderProducts(); renderGifts(); updateCart();
     </script>
 </body>
 </html>
